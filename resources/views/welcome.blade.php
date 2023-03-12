@@ -12,20 +12,15 @@
     
 </head>
 <body>
-    <div class="banner-header">
-        <section>
-        <div class="header">
-            <img src="{{ asset('images/logo.png') }}">
-            <div class="wrap-nav">
-                <a href="{{ url('/home') }}">Home</a>
-                <a href="{{ url('/about') }}">About</a>
-                <a href="{{ url('/support') }}">Support</a>
-            </div>
-        </div>
-            <p class="text-nav">|    Make your dream comes true, to not forget about bill.</p>
 
-        </section>
-</div>
+
+    <div class="banner-header">
+        <img src="{{ asset('images/logo.png') }}">
+        <div class="banner-content">
+            <p>Make it simple, make it faster</p>
+            <a href="{{ url('auth/login') }}">Get Started</a>
+        </div>
+    </div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

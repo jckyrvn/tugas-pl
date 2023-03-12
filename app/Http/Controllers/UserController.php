@@ -59,4 +59,12 @@ class UserController extends Controller
             return redirect()->route('auth.login');
     }
 
+
+    public function showProfile(){
+        return view('pages/profile');
+    }
+    public function create(){
+    
+    }
+
 }

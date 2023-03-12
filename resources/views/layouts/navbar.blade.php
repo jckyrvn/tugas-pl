@@ -11,16 +11,38 @@
 
 </head>
 <body>
-    <section>
-        <div class="nav-container">
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-                <button type="submit">
-                <i class="bi bi-box-arrow-left"></i> 
-                <span>Log Out</span>
-                </button>
+    <div class="nav-container">
+        <section>
+            <img src="{{ asset('images/logo.png') }}">
+            @if(request()->fullUrl() != url('pages/profile') )
+            <form action="" method="POST">
+                 @csrf
+                 <i class="bi bi-search"></i>
+                <input type="text" name="search" placeholder="Search Products..." required/>
             </form>
-        </div>
-    </section>
+            @endif
+            <div class="dropdown">
+                <div class="nav-profile"  data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('images/profile.png') }}">
+                    <p>{{ Auth::user()->name }}</p>
+                </div>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <form action="{{ route('profile') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="user_id">
+                                <a class="dropdown-item" href="{{ url('pages/profile') }}">Profile</a>
+                            </form>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Cart</a></li>
+                        <li class="self-drop"><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+                    </ul>
+            </div>
+        </section>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </body>
 </html>

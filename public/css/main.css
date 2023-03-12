@@ -1,6 +1,5 @@
 *{
-    font-family: 'Quicksand', sans-serif;
-   
+    font-family: 'Poppins', sans-serif;
 }
 html{
     scroll-behavior: smooth;
@@ -8,7 +7,6 @@ html{
 section{
     padding: 0px 15rem;
 }
-
 
 .img-logo{
     width: 285px;
@@ -73,6 +71,130 @@ section{
     font-size: 15px;
     margin-top: 20px;
 }
-.nav-container{
-    
+
+
+/* BANNER LANDING PAGE */
+.banner-header{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/banner-getstarted.png")
 }
+.banner-header img{
+    margin-top: 40px;
+}
+.banner-header .banner-content{
+    margin-top: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.banner-header .banner-content p{
+    color: white;
+    font-size: 91px;
+    font-weight: bold;
+}
+.banner-header .banner-content a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #0163D1;
+    color: white;
+    width: 364px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+.banner-header .banner-content a:hover{
+    background-color: #060A1A;
+}
+
+
+/* NAVBAR */
+.nav-container{
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    width: 100%;
+    height: 75px;
+    border-color: #c1c1c1;
+}
+.nav-container section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+.nav-container img{
+    width: 149px;
+    height: 52px;
+}
+.nav-container form i{
+    position: absolute;
+    margin-top: 12px;
+    margin-left: 15px;
+    color: #c1c1c1;
+}
+.nav-container form input{
+    width: 606px;
+    height: 48px;
+    border-color: #c1c1c1;
+    border-radius: 10px;
+    border-width: 1px;
+    padding: 0px 5rem;
+}
+.nav-container .nav-profile{
+    display: flex;
+    align-items: start;
+    flex-direction: row;
+    cursor: pointer;
+}
+.nav-container .dropdown .nav-profile img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+}
+.nav-container .dropdown .nav-profile p{
+    font-size: 25px;
+    margin-top: 6px;
+}
+.nav-container .dropdown .dropdown-menu .self-drop{
+    border-style: solid;
+    border-width: 1px 0px 0px 0px;
+    border-color: #E5E5E5;
+}
+
+
+/* HOME */
+section .event-container{
+    margin: 33px 0px;
+}
+section .event-container img{
+    width: 100%;
+    height: 350px;
+}
+section .text-featured{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+section .text-featured label{
+    font-weight: bold;
+    font-size: 40px;
+}
+section .text-featured .dropdown .filter{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    color: #0064D3;
+}
+section .text-featured .dropdown .filter i{
+    margin-right: 10px;
+}
+

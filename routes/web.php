@@ -39,3 +39,11 @@ Route::group([
 ], function(){
     Route::get('/home', [HomeController::class, "index"])->name('home');
 });
+
+Route::group([
+    'middleware'=> 'auth',
+    'prefix'=> 'pages',
+], function(){
+    Route::post('/profile', [UserController::class, "create"])->name('profile');
+    Route::get('/profile', [UserController::class, "showProfile"])->name('showProfile');
+});
