@@ -46,6 +46,7 @@ class UserController extends Controller
             return back()->withErrors(["message"=>"User Tidak ditemukan"]);
         }
         if(Auth::attempt($request->only('email', 'password'))){
+            $request->session()->regenerate();
             return redirect()->route('home');
         }
     }

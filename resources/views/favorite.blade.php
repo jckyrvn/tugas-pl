@@ -29,13 +29,7 @@
 
     @include('layouts.navbar')
     <section>
-        @if (\Auth::user() && \Auth::user()->isSeller == true)
-        <a class="dropdown-item text-dark" href="/seller/home">
-            Seller Page
-        </a>
-        @endif
-
-        {{ Auth::user()->id }}
+        favorite page
     </section>
 </body>
 

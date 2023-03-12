@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link href="css/main.css" rel="stylesheet" />
+    <link href="/css/main.css" rel="stylesheet" />
 
 </head>
 
@@ -29,13 +29,23 @@
 
     @include('layouts.navbar')
     <section>
-        @if (\Auth::user() && \Auth::user()->isSeller == true)
-        <a class="dropdown-item text-dark" href="/seller/home">
-            Seller Page
-        </a>
-        @endif
+        <b>master data product</b>
 
-        {{ Auth::user()->id }}
+        <form action="/seller/postproduct" method="post" enctype="multipart/form-data">
+            @csrf
+
+            <input type="text" name="name_product" id="name_product" placeholder="name_product"> <br>
+            <textarea type="text" name="description" id="description" placeholder="description"></textarea> <br>
+            <input type="number" name="price" id="price" placeholder="price"> <br>
+            <input type="text" name="seller_id" id="seller_id" placeholder="seller_id" value="{{ Auth::user()->id }}"
+                readonly>
+            <br>
+            <input type="file" name="media" id="media"> <br>
+            <input type="number" name="stock" id="stock" placeholder="stock"> <br>
+
+            <br>
+            <button type="submit">Submit</button>
+        </form>
     </section>
 </body>
 
