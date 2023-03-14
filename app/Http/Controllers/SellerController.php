@@ -19,6 +19,8 @@ class SellerController extends Controller
         $validator = Validator::make($request->all(), [
             'name_product'=>'max:255',
             'description'=>'',
+            'subprice'=>'required',
+            'discount'=>'required',
             'price'=>'max:100',
             'seller_id'=>'max:255',
             'media'=>'image|mimes:jpeg,png,jpg',
@@ -37,6 +39,8 @@ class SellerController extends Controller
             $data = new Product;
             $data->name_product = $request->input('name_product');
             $data->description = $request->input('description');
+            $data->subprice = $request->input('subprice');
+            $data->discount = $request->input('discount');
             $data->price = $request->input('price');
             $data->seller_id = $request->input('seller_id');
             $data->stock = $request->input('stock');
@@ -71,6 +75,8 @@ class SellerController extends Controller
         $validator = Validator::make($request->all(), [
             'name_product'=>'max:255',
             'description'=>'',
+            'subprice'=>'',
+            'discount'=>'',
             'price'=>'max:100',
             'seller_id'=>'max:255',
             'media'=>'image|mimes:jpeg,png,jpg',
@@ -90,6 +96,8 @@ class SellerController extends Controller
             if($data){
                 $data->name_product = $request->input('name_product');
                 $data->description = $request->input('description');
+                $data->subprice = $request->input('subprice');
+                $data->discount = $request->input('discount');
                 $data->price = $request->input('price');
                 $data->seller_id = $request->input('seller_id');
                 $data->stock = $request->input('stock');

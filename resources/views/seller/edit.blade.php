@@ -38,6 +38,11 @@
                 value="{{ $data->name_product }}"> <br>
             <textarea name="description" id="description" placeholder="description"
                 value="{{ $data->description }}">{{ $data->description }}</textarea> <br>
+            <input type="number" name="subprice" id="subprice" placeholder="subprice" value="{{ $data->subprice }}">
+            <br>
+            <input type="number" name="discount" id="discount" placeholder="discount" value="{{ $data->discount }}"
+                onblur="price_discount()"> <br>
+            <label type="text" name="rp_discount" id="rp_discount" placeholder="rp_discount"></label> <br>
             <input type="number" name="price" id="price" placeholder="price" value="{{ $data->price }}"> <br>
             <input type="text" name="seller_id" id="seller_id" placeholder="seller_id" value="{{ $data->seller_id }}"
                 readonly>
@@ -49,6 +54,20 @@
             <button type="submit">Update</button>
         </form>
     </section>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script>
+        function price_discount(){
+                var subprice = document.getElementById("subprice").value;
+                var discount = document.getElementById("discount").value;
+                var rp_discount = discount/100*subprice;
+                document.getElementById("rp_discount").innerHTML = rp_discount;
+    
+                var price = subprice -rp_discount;
+                document.getElementById("price").value = price;
+            }
+    </script>
 </body>
 
 </html>
