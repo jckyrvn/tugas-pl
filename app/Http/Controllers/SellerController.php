@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\tempmerchant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
@@ -152,6 +153,40 @@ class SellerController extends Controller
                 ->route('seller.home')
                 ->with([
                 'error' => 'Oops, Try Again'
+            ]);
+        }
+    }
+
+    public function becomeseller()
+    {
+        return view ('seller.signup');
+    }
+
+    public function signupseller(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'seller_id'=>'required',
+            'merchant_address'=>'required',
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()
+                ->route('home')
+                ->with([
+                'error' => 'Oops, Try Again'
+            ]);
+        } else {
+
+            $data = new tempmerchant;
+            $data->seller_id = $id;
+            $data->merchant_address = $request->merchant_address;
+            $data->save();
+
+            return redirect()
+                ->route('home')
+                ->with([
+                'success' => 'Data Inputed Succesfully'
             ]);
         }
     }

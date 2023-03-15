@@ -29,24 +29,16 @@
 
     @include('layouts.navbar')
     <section>
-        @if (\Auth::user() && \Auth::user()->isSeller == true)
-        <a class="dropdown-item text-dark" href="/seller/home">
-            Seller Page
-        </a>
-        @endif
+        <p>become seller page</p>
 
-        @if (\Auth::user() && \Auth::user()->isAdmin == true)
-        <a class="dropdown-item text-dark" href="/admin/home">
-            Admin Page
-        </a>
-        @endif
+        <form action="/post/signupseller/{{ Auth::user()->id }}" method="post">
+            @csrf
 
-        @if (\Auth::user() && \Auth::user()->isSeller == false)
-        <a href="/post/seller">become seller</a>
-        @endif
+            <input type="text" name="seller_id" id="seller_id" value="{{ Auth::user()->id }}" readonly> <br>
+            <textarea name="merchant_address" id="merchant_address"></textarea>
 
-
-        {{ Auth::user()->id }}
+            <button type="submit">submit</button>
+        </form>
     </section>
 </body>
 
