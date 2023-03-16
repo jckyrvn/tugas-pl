@@ -15,7 +15,45 @@
 <body>
     @include('layouts.navbar')
     <section>
-          
+          <div class="main-profile">
+
+            <div class="back-profile">
+                <a href="{{ route('home') }}">
+                <i class="bi bi-chevron-left"></i>
+                </a>
+                <label>Profile</label>
+            </div>
+
+            <div class="content">
+                <div class="wrap-content">
+                    <img src="{{ asset('images/profile.png') }}">
+                    <div class="user">
+                        <label>{{ Auth::user()->name }}</label>
+                        <p>{{ Auth::user()->email }}</p>
+                        <p>0812345678910</p>
+                    </div>
+                </div>
+
+                <div class="button-content">
+                    <a href="{{ route('seller') }}">
+                    <button class="button-1">Seller Centre</button>
+                    </a>
+                    <button class="button-2">Edit Profile</button>
+                </div>
+
+            </div>
+            
+            <hr>
+
+            <div class="history-profile">
+                <label>History</label>
+            </div>
+
+            <div class="second-content">
+                <div></div>
+            </div>
+
+          </div>
     </section>
     
     

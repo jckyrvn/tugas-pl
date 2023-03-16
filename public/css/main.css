@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@200;400;500;600&display=swap');
+
 *{
     font-family: 'Poppins', sans-serif;
 }
@@ -135,13 +137,14 @@ section{
 }
 .nav-container form i{
     position: absolute;
-    margin-top: 12px;
+    margin-top: 8px;
     margin-left: 15px;
     color: #c1c1c1;
 }
 .nav-container form input{
     width: 606px;
     height: 48px;
+    border-style: solid;
     border-color: #c1c1c1;
     border-radius: 10px;
     border-width: 1px;
@@ -193,8 +196,113 @@ section .text-featured .dropdown .filter{
     flex-direction: row;
     cursor: pointer;
     color: #0064D3;
+    justify-content: center;
 }
 section .text-featured .dropdown .filter i{
     margin-right: 10px;
 }
+section .text-featured .dropdown .filter p{
+    font-weight: bold;
+    margin-top: 4px;
+}
 
+
+/* PROFILE */
+
+
+section .main-profile .back-profile{
+    margin-top: 77px;
+    font-weight: bold;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+}
+section .main-profile .back-profile a{
+    text-decoration: none;
+}
+section .main-profile .back-profile i{
+    color: #0163D1;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+}
+
+section .main-profile .content{
+    margin: 65px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+section .main-profile .content .wrap-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+section .main-profile .content .wrap-content img{
+    width: 250px;
+    height: 250px;
+    border-radius: 500px;
+    object-fit: cover;
+}
+section .main-profile .content .user{
+    margin-left: 61px;
+}
+section .main-profile .content .user label{
+    font-size: 40px;
+    font-weight: bold;
+}
+section .main-profile .content .user p{
+    font-size: 30px;
+}
+section .main-profile .content .button-content .button-1{
+    width: 256px;
+    height: 69px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #E8E8E8;
+    color: #0163D1;
+    background-color: white; 
+    font-weight: bold;
+    font-size: 24px;
+    margin-right: 22px;
+}
+section .main-profile .content .button-content .button-2{
+    width: 256px;
+    height: 69px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #E8E8E8;
+    color: white;
+    background-color: #0163D1; 
+    font-weight: bold;
+    font-size: 24px;
+}
+
+section .main-profile hr{
+    width: 100%;
+    color: #e8e8e8;
+    border-style: solid;
+    border-width: 1px;
+}
+section .main-profile .second-profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+section .main-profile .history-profile{
+    font-weight: bold;
+    font-size: 40px;
+    margin: 41px 0px;
+}
+section .main-profile .second-profile a{
+    text-decoration: none;
+    background-color: #0163D1;
+    color: white;
+    padding: 15px 74px;
+    font-weight: bold;
+    border-radius: 7px;
+}

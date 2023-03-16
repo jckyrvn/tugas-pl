@@ -14,7 +14,7 @@
     <div class="nav-container">
         <section>
             <img src="{{ asset('images/logo.png') }}">
-            @if(request()->fullUrl() != url('pages/profile') )
+            @if(request()->fullUrl() == url('post/home') )
             <form action="" method="POST">
                  @csrf
                  <i class="bi bi-search"></i>
@@ -35,7 +35,17 @@
                             </form>
                         </li>
                         <li><a class="dropdown-item" href="#">Cart</a></li>
-                        <li class="self-drop"><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+                        @if (\Auth::user() && \Auth::user()->isSeller == true)
+                            <a class="dropdown-item text-dark" href="/pages/seller">
+                            Seller Page
+                            </a>
+                        @endif
+                        @if (\Auth::user() && \Auth::user()->isSeller == false)
+                            <a class="dropdown-item text-dark" href="/seller/home">
+                            Become Seller
+                            </a>
+                        @endif
+                        <li class="self-drop"><a class="dropdown-item" href="{{ route('auth.login') }}"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
                     </ul>
             </div>
         </section>
