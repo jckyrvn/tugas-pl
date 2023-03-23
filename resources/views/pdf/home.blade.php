@@ -89,7 +89,7 @@
     }
 
     table {
-        width: 90%;
+        width: 100%;
         border-collapse: collapse;
         border-spacing: 0;
         margin-bottom: 20px;
@@ -97,7 +97,9 @@
 
     table th,
     table td {
-        padding: 10px;
+        /* padding-top: 10px;
+        padding-bottom: 10px; */
+        padding: 5px;
         background: #eeeeee;
         text-align: center;
         border-bottom: 1px solid #ffffff;
@@ -230,29 +232,39 @@
             <div id="invoice">
                 <h1>INVOICE {{ $item2->id }}</h1>
                 <div class="date">Date of Invoice: {{ $item2->created_at }}</div>
+                <div class="date">Order Status: {{ $item2->status }}</div>
             </div>
             @endforeach
         </div>
         <table border="0" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
-                    <th class="no">PRODUCT NAME</th>
-                    <th class="desc">DESCRIPTION</th>
-                    <th class="unit">SUB PRICE</th>
-                    <th class="unit">DISCOUNT</th>
-                    <th class="qty">QUANTITY</th>
-                    <th class="total">TOTAL</th>
+                    <th class="no">#</th>
+                    <th class="unit">Product Name</th>
+                    <th class="desc">Description</th>
+                    <th class="unit">Subprice</th>
+                    <th class="unit">Discount (%)</th>
+                    <th class="unit">Price After Disc</th>
+                    <th class="qty">Quantity</th>
+                    <th class="total">Total</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                $num=1;
+                @endphp
                 @foreach ($data1 as $item1)
                 <tr>
-                    <td class="no">{{ $item1->productdetail->name_product }}</td>
+                    <td class="no">
+                        {{ $num++ }}
+                    </td>
+                    <td class="unit">{{ $item1->productdetail->name_product }}</td>
                     <td class="desc">
                         {{ $item1->productdetail->description }}
                     </td>
                     <td class="unit">{{ $item1->productdetail->subprice }}</td>
                     <td class="unit">{{ $item1->productdetail->discount }}%/item</td>
+                    <td class="unit">{{ $item1->subprice }}</td>
                     <td class="qty">{{ $item1->quantity }}</td>
                     <td class="total">{{ $item1->price }}</td>
                 </tr>
@@ -262,7 +274,7 @@
                 <tr>
                     @foreach ($data2 as $item2)
 
-                    <td colspan="3"></td>
+                    <td colspan="5"></td>
                     <td colspan="2">GRAND TOTAL</td>
                     <td>Rp. {{ $item2->totalprice }}</td>
                     @endforeach

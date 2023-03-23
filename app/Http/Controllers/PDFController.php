@@ -14,7 +14,7 @@ class PDFController extends Controller
         $data1 = buydetail::where('buy_id', $id)->with('productdetail')->get();
         $data2 = buy::where('id', $id)->with('userdetail')->get();
         $data3 = buydetail::where('buy_id', $id)->with('sellerdetail')->first();
-        // return $data3;
+        // return $data1;
         // return view('pdf.home')->with([
         //     'data1' => $data1,
         //     'data2' => $data2,

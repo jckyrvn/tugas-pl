@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\buy;
 use App\Models\Product;
 use App\Models\tempmerchant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 
@@ -188,6 +190,38 @@ class SellerController extends Controller
                 ->with([
                 'success' => 'Data Inputed Succesfully'
             ]);
+        }
+    }
+
+    public function orders(){
+        $seller = Auth::user()->id;
+        $dataall = buy::where('seller_id', $seller)->with('buydetail')->get();
+
+        return view ('seller.orders')->with([
+            'dataall' => $dataall
+        ]);
+    }
+
+    public function editorders($id){
+        $data = buy::where('id', $id)->get();
+
+        return view ('seller.editorders')->with([
+            'data' => $data
+        ]);
+    }
+
+    public function updateorders(Request $request, $id){
+        $data = buy::find($id);
+        if($data){
+            $data->status = $request->input('status');
+
+            $data->save();
+
+                return redirect()
+                    ->route('seller.home')
+                    ->with([
+                    'success' => 'Data Updated Succesfully'
+                ]);
         }
     }
 }

@@ -70,6 +70,10 @@ Route::group([
     Route::get('/editproduct/{id}', [SellerController::class, "editproduct"])->name('editproduct');
     Route::post('/updateproduct/{id}', [SellerController::class, "updateproduct"])->name('updateproduct');
     Route::get('/destroyproduct/{id}', [SellerController::class, "destroyproduct"])->name('destroyproduct');
+    
+    Route::get('/orders', [SellerController::class, "orders"])->name('seller.orders');
+    Route::get('/orders/{id}', [SellerController::class, "editorders"])->name('seller.editorders');
+    Route::post('/updateorders/{id}', [SellerController::class, "updateorders"])->name('seller.updateorders');
 });
 
 Route::group([

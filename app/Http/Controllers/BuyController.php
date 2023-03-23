@@ -14,10 +14,13 @@ class BuyController extends Controller
 {
     public function postbuy(Request $request, $id){
         $user = Auth::user()->id;
+        $data3 = tempcarts::where('buy_id', $id)->first();
+        $sellerid = $data3->seller_id;
 
         $sum1 = tempcarts::where('user_id', $user)->sum('price');
         $dataall = tempcarts::where('buy_id', $id)->get();
         
+
         $validator = Validator::make($request->all(), [
             'buy_id'=>'required',
             'user_id'=>'required',
@@ -39,6 +42,7 @@ class BuyController extends Controller
             buy::create([
                 'id' => $id,
                 'user_id' => $user,
+                'seller_id' => $sellerid,
                 'totalprice' => $sum1
             ]);
 
