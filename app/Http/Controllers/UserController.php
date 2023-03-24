@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Product;
 
 class UserController extends Controller
 {
@@ -61,11 +62,15 @@ class UserController extends Controller
     }
 
 
-    public function showProfile(){
+    public function showProfile($id){
         return view('pages/profile');
     }
-    public function showSeller(){
-        return view('pages/centre');
+    public function showSeller($id){
+        $product_seller_all = User::with(['product'])->where('id', $id)->first();
+        return view('pages/centre', [
+            'id' => $id,
+            'product_seller_all' => $product_seller_all,
+        ]);
     }
     public function create(){
     

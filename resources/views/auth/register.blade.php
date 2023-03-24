@@ -16,7 +16,7 @@
     <section class="container-background">
         <div class="container-mid">
             <img src="{{ asset('images/logo.png') }}" class="img-logo">
-            <form action="{{ route('register') }}" method="post" class="form-auth">
+            <form action="{{ route('register') }}" method="post" class="form-auth-2">
                 @csrf
                 @if ($errors->any())
                     <div class="error">

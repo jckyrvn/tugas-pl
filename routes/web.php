@@ -47,6 +47,7 @@ Route::group([
     Route::get('/destroyfavorite/{id}', [FavoriteController::class, "destroyfavorite"])->name('destroyfavorite');
     Route::get('/seller', [SellerController::class, "becomeseller"])->name('becomeseller');
     Route::post('/signupseller/{id}', [SellerController::class, "signupseller"])->name('signupseller');
+    Route::post('/home/search', [HomeController::class, "search"])->name('search');
 });
 
 Route::group([
@@ -65,16 +66,15 @@ Route::group([
     'prefix'=> 'pages',
 ], function(){
     Route::post('/profile', [UserController::class, "create"])->name('profile');
-    Route::get('/profile', [UserController::class, "showProfile"])->name('showProfile');
-    Route::get('/seller' , [UserController::class, "showSeller"])->name('seller');
+    Route::get('/profile/{id}', [UserController::class, "showProfile"])->name('showProfile');
+    Route::get('/seller/{id}' , [UserController::class, "showSeller"])->name('seller');
+});
+
+    Route::group([
     'middleware' => 'admin',
     'prefix' => 'admin'
 ], function(){
     Route::get('/home', [AdminController::class, "index"])->name('admin.home');
     Route::get('/approve/{id}', [AdminController::class, "approve"])->name('admin.approve');
     Route::get('/reject/{id}', [AdminController::class, "reject"])->name('admin.reject');
-    // Route::post('/postproduct', [SellerController::class, "postproduct"])->name('seller.postproduct');
-    // Route::get('/editproduct/{id}', [SellerController::class, "editproduct"])->name('editproduct');
-    // Route::post('/updateproduct/{id}', [SellerController::class, "updateproduct"])->name('updateproduct');
-    // Route::get('/destroyproduct/{id}', [SellerController::class, "destroyproduct"])->name('destroyproduct');
 });

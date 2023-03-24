@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class Product extends Model
 {
@@ -19,4 +20,7 @@ class Product extends Model
         'media',
         'stock',
     ];
+    public function user(){
+        return $this->hasOne(User::class, 'seller_id', 'id');
+    }
 }

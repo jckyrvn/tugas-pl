@@ -13,4 +13,18 @@ class HomeController extends Controller
             'product'=>$product,
         ]);
     }
+    public function search(Request $request){
+        $search = $request->input('search');
+    
+        // Search in the title and body columns from the posts table
+        $posts = Product::query()
+            ->where('name_product', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->get();
+    
+        // Return the search view with the resluts compacted
+        return view('home', [
+            'product'=> $posts,
+        ]); 
+    }
 }

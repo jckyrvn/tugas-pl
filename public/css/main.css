@@ -7,9 +7,11 @@ html{
     scroll-behavior: smooth;
 }
 section{
-    padding: 0px 15rem;
+    padding: 0px 174px;
 }
-
+.logo-tab{
+    width: 1px;
+}
 .img-logo{
     width: 285px;
     height: 97.55px;
@@ -69,6 +71,50 @@ section{
     margin: 20px 0px;
 }
 .container-mid .form-auth p{
+    color: #9B9B9B;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+/* REGISTER */
+.container-mid .form-auth-2{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 4.5rem 5rem;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 2rem;
+    border-style: solid;
+    border-width: 0px 0px 3px 0px;
+    border-color: #0163D1;
+}
+.container-mid .form-auth-2 label{
+    color: #0163D1;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 2rem;
+}
+.container-mid .form-auth-2 span{
+    color: #9B9B9B;
+    align-self: start;
+    font-weight: bold;
+}
+.container-mid .form-auth-2 input{
+    color: #9B9B9B;
+    width: 322.65px;
+    height: 51.19px;
+    margin-bottom: 30px;
+}
+.container-mid .form-auth-2 button{
+    background-color: #0163D1;
+    color: white;
+    border: none;
+    font-weight: semibold;
+    padding: 8px 5rem; 
+    margin: 20px 0px;
+}
+.container-mid .form-auth-2 p{
     color: #9B9B9B;
     font-size: 15px;
     margin-top: 20px;
@@ -255,6 +301,10 @@ section .main-profile .content .user label{
 section .main-profile .content .user p{
     font-size: 30px;
 }
+section .main-profile .content .button-content {
+    display: flex;
+    flex-direction: row;
+}
 section .main-profile .content .button-content .button-1{
     width: 256px;
     height: 69px;
@@ -305,4 +355,105 @@ section .main-profile .second-profile a{
     padding: 15px 74px;
     font-weight: bold;
     border-radius: 7px;
+}
+section .main-profile .second-content{
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #E8E8E8;
+    margin-bottom: 41px;
+}
+section .main-profile .second-content img{
+    width: 374px;
+    height: 313.84px;
+    object-fit: cover;
+}
+section .main-profile .second-content .wrap-product{
+    display: flex;
+    flex-direction: column;
+    padding: 55px 30px;
+    justify-content: space-between;
+   
+}
+section .main-profile .second-content .wrap-product h1{
+    font-size: 37px;
+    width: 710px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+section .main-profile .second-content .wrap-product label{
+    font-size: 30px;
+    font-weight: semibold;
+}
+section .main-profile .second-content .wrap-product span{
+    font-size: 18px;
+    color: #858585;
+}
+
+
+
+
+/* CONTENT PRODUCT */
+section .main-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10.5px;
+}
+section .main-content .wrap-content{
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width:  1px;
+    border-color: #e8e8e8;
+}
+section .main-content .wrap-content img{
+    width: 374px;
+    height: 313.84px;
+    border-style: solid;
+    border-width:  0px 0px 1px 0px;
+    border-color: #e8e8e8;
+    object-fit: cover;
+}
+section .main-content .wrap-content .text-content{
+    display: flex;
+    flex-direction: column;
+    padding: 18.5px 24px;
+}
+section .main-content .wrap-content .text-content p{
+    font-weight: medium;
+    font-size: 16px;
+    width: 327px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+section .main-content .wrap-content .text-content .discount-label{
+    display: flex;
+    flex-direction: row;
+}
+section .main-content .wrap-content .text-content label{
+    background-color: #1C8B27;
+    color: white;
+    padding: 0px 14px;
+    border-radius: 5px;
+}
+section .main-content .wrap-content .text-content span{
+    background-color: #EE722C;
+    color: white;
+    padding: 0px 14px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+section .main-content .wrap-content .text-content .price-content p{
+    text-decoration-line: line-through; 
+    margin-top: 11px;
+    color: #a8a8a8;
+}
+section .main-content .wrap-content .text-content .price-content h1{
+    font-weight: semibold;
+    font-size: 30px;
+    color: #252525;
 }
