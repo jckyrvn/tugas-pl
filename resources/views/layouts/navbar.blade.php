@@ -14,7 +14,7 @@
     <div class="nav-container">
         <section>
             <img src="{{ asset('images/logo.png') }}">
-            @if(request()->fullUrl() == url('post/home') &&2 url('post/home/search')  )
+            @if(request()->fullUrl() == url('post/home') && url('post/home/search')  )
             <form action="{{ route('search') }}" method="POST">
                  @csrf
                  <i class="bi bi-search"></i>
@@ -28,12 +28,9 @@
                 </div>
                     <ul class="dropdown-menu">
                         <li>
-                            <form action="{{ url('pages/profile') }}/{{ Auth::user()->id }}" method="GET" class="" >
-                                @csrf
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                                <!-- <a class="dropdown-item" href="{{ url('pages/profile') }}">Profile</a> -->
-                                <button type="submit" class="dropdown-item text-dark">Profile</button>
-                            </form>
+                        <a class="dropdown-item" href="{{ url('pages/profile') }}/{{ Auth::user()->id }}">
+                            Profile
+                        </a>
                         </li>
                         <li><a class="dropdown-item" href="#">Cart</a></li>
                         @if (\Auth::user() && \Auth::user()->isSeller == true)

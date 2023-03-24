@@ -84,6 +84,10 @@
 
                 </div>
             @endforeach
+
+            @if (\Auth::user() && \Auth::user()->isSeller == false)
+                <p>Become Seller and add your items!</p>
+            @endif
           </div>
     </section>
     
