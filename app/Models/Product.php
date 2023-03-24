@@ -12,6 +12,8 @@ class Product extends Model
         'id',
         'name_product',
         'description',
+        'subprice',
+        'discount',
         'price',
         'seller_id',
         'media',

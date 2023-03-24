@@ -62,6 +62,17 @@
 
           
 
+        @if (\Auth::user() && \Auth::user()->isAdmin == true)
+        <a class="dropdown-item text-dark" href="/admin/home">
+            Admin Page
+        </a>
+        @endif
+
+        @if (\Auth::user() && \Auth::user()->isSeller == false)
+        <a href="/post/seller">become seller</a>
+        @endif
+
+
         {{ Auth::user()->id }}
     </section>
     

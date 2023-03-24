@@ -38,7 +38,7 @@
                 value="{{ $data->name_product }}"> <br>
             <textarea name="description" id="description" placeholder="description"
                 value="{{ $data->description }}">{{ $data->description }}</textarea> <br>
-                <input type="number" name="subprice" id="subprice" placeholder="subprice" value="{{ $data->subprice }}">
+            <input type="number" name="subprice" id="subprice" placeholder="subprice" value="{{ $data->subprice }}">
             <br>
             <input type="number" name="discount" id="discount" placeholder="discount" value="{{ $data->discount }}"
                 onblur="price_discount()"> <br>
