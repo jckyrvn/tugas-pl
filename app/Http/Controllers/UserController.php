@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Response;
+use App\Models\buy;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -62,8 +64,13 @@ class UserController extends Controller
     }
 
 
-    public function showProfile($id){
-        return view('pages/profile');
+    public function showProfile(){
+        $userid = Auth::user()->id;
+        $dataall = buy::where('user_id', $userid)->with('history')->get();
+
+        return view ('pages/profile')->with([
+            'dataall' => $dataall
+        ]);
     }
     public function showSeller($id){
         $product_seller_all = User::with(['product'])->where('id', $id)->first();
@@ -76,4 +83,76 @@ class UserController extends Controller
     
     }
 
+    public function editProfile(){
+        $userid = Auth::user()->id;
+
+        $cekuser = User::find($userid);
+
+        if($cekuser!=null){            
+            return view('pages/editprofile')->with([
+            'cekuser' => $cekuser
+        ]);
+        } else {    
+            return redirect()
+                    ->route('home')
+                    ->with([
+                    'error' => 'Not Found'
+            ]);
+        }
+    }
+
+    public function updateProfile(Request $request){
+        $userid = Auth::user()->id;
+
+        $validator = Validator::make($request->all(), [
+            'name'=>'required',
+            'email'=>'required',
+            'address'=>'',
+            'merchant_address'=>'',
+            'number'=>'',
+            'profile'=>'image|mimes:jpeg,png,jpg'
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()
+                ->route('home')
+                ->with([
+                'error' => $validator->messages()
+            ]);
+        } else {
+            $data = User::find($userid);
+            if($data){
+                $data->name = $request->input('name');
+                $data->email = $request->input('email');
+                $data->address = $request->input('address');
+                $data->merchant_address = $request->input('merchant_address');
+                $data->number = $request->input('number');
+
+                if($request->hasFile('profile'))
+                {
+                    $path = 'img/'.$data->profile;
+                    if(File::exists($path))
+                    {
+                        File::delete($path);
+                    }
+
+                    $file = $request->file('profile');
+                    $namaFile = time().rand(100,999).".".$file->getClientOriginalExtension();
+                    $file->move(public_path().'/profileimg', $namaFile);
+                    $data->profile = $namaFile;
+                }
+                $data->save();
+    
+                return redirect()
+                    ->route('home');
+            } else {
+                return redirect()
+                ->route('home')
+                ->with([
+                'error' => 'Data anda tidak berhasil di update'
+            ]);
+            }
+        }
+    }
 }

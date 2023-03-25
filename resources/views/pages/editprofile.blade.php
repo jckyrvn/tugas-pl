@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Edit Profile Page</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -26,7 +26,7 @@
                 <a href="{{ route('home') }}">
                     <i class="bi bi-chevron-left"></i>
                 </a>
-                <label>Profile</label>
+                <label>Edit Profile</label>
             </div>
 
             <div class="content">
@@ -38,34 +38,22 @@
                         <p>0812345678910</p>
                     </div>
                 </div>
-
-                <div class="button-content">
-                    <form action="{{ url('pages/seller') }}/{{ Auth::user()->id }}" method="GET">
-                        @csrf
-                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                        <!-- <a class="dropdown-item" href="{{ url('pages/profile') }}">Profile</a> -->
-                        <button type="submit" class="button-1">Seller Centre</button>
-                    </form>
-                    <button class="button-2">Edit Profile</button>
-                </div>
-
             </div>
-
             <hr>
+            {{ $cekuser }}
 
-            <div class="history-profile">
-                <label>History</label>
+            <form action="{{ route('updateProfile') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="text" name="name" id="name" value="{{ $cekuser->name }}"><br>
+                <input type="text" name="email" id="email" value="{{ $cekuser->email }}" readonly><br>
+                <input type="text" name="address" id="address" value="{{ $cekuser->address }}"><br>
+                <input type="text" name="merchant_address" id="merchant_address"
+                    value="{{ $cekuser->merchant_address }}"><br>
+                <input type="file" name="profile" id="profile"><br>
+                <input type="text" name="number" id="number" value="{{ $cekuser->number }}"><br>
 
-                {{ $dataall }}
-            </div>
-
-
-            <div class="second-content">
-                <div>
-
-                </div>
-            </div>
-
+                <button type="submit">updateprofile</button>
+            </form>
         </div>
     </section>
 

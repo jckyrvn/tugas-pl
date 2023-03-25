@@ -28,4 +28,9 @@ class buy extends Model
         return $this->hasMany(buydetail::class, 'buy_id', 'id');
     }
 
+    public function history()
+    {
+        return $this->hasMany(buydetail::class, 'buy_id', 'id');
+    }
+
 }
