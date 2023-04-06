@@ -65,6 +65,9 @@ class UserController extends Controller
     public function showProfile($id){
         return view('pages/profile');
     }
+    public function editProfile($id){
+        return view('pages/editprofile');
+    }
     public function showSeller($id){
         $product_seller_all = User::with(['product'])->where('id', $id)->first();
         return view('pages/centre', [

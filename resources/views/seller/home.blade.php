@@ -18,6 +18,7 @@
     @if(session()->has('success'))
     <div class="alert alert-success ">
         {{ session('success') }}
+        <a href="/post/home">Go see my product</a>
     </div>
     @endif
 
@@ -129,8 +130,11 @@
                 <div class="main-product">
                     <h1>Product Photo</h1>
                     <div>
-                        <div class="main-photo" id="display_media"></div>
                         <input type="file" name="media" id="media" class="input-photo">
+                        <div class="main-photo" id="display_media">
+                        <i class="bi bi-folder-plus"></i>
+                        </div>
+                        
                     </div>
                 </div>
 

@@ -27,32 +27,123 @@
     </div>
     @endif
 
-    @include('layouts.navbar')
-    <section>
-        <b>master data product</b>
 
-        <form action="/seller/updateproduct/{{ $data->id }}" method="post" enctype="multipart/form-data">
-            @csrf
-
-            <input type="text" name="name_product" id="name_product" placeholder="name_product"
-                value="{{ $data->name_product }}"> <br>
-            <textarea name="description" id="description" placeholder="description"
-                value="{{ $data->description }}">{{ $data->description }}</textarea> <br>
-            <input type="number" name="subprice" id="subprice" placeholder="subprice" value="{{ $data->subprice }}">
-            <br>
-            <input type="number" name="discount" id="discount" placeholder="discount" value="{{ $data->discount }}"
-                onblur="price_discount()"> <br>
-            <label type="text" name="rp_discount" id="rp_discount" placeholder="rp_discount"></label> <br>
-            <input type="number" name="price" id="price" placeholder="price" value="{{ $data->price }}"> <br>
-            <input type="text" name="seller_id" id="seller_id" placeholder="seller_id" value="{{ $data->seller_id }}"
+    <section class="container-seller">
+        <div class="container-mid">
+            <img src="{{ asset('images/logo.png') }}" class="img-logo">
+            <b>Edit Items</b>
+            
+            <form action="/seller/updateproduct/{{ $data->id }}" class="form-product" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="seller_id" id="seller_id" placeholder="seller_id" value="{{ $data->seller_id }}"
                 readonly>
-            <br>
-            <input type="file" name="media" id="media"> <br>
-            <input type="number" name="stock" id="stock" placeholder="stock" value="{{ $data->stock }}"> <br>
+                <div class="main-product">
+                    <h1>Product Information</h1>
+                    <div class="main-content">
+                        <div class="wrap-content">
+                            <div class="wrap-detail">
+                                <label>Product Name</label>
+                                <span>Required</span>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <input type="text" name="name_product" id="name_product" value="{{ $data->name_product }}">
+                    </div>
 
-            <br>
-            <button type="submit">Update</button>
+                
+                    <div class="main-content">
+                        <div class="wrap-content">
+                            <div class="wrap-detail">
+                                <label>Description</label>
+                                <span>Required</span>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <textarea name="description" id="description" value="{{ $data->description }}">{{ $data->description }}</textarea>
+                    </div>
+
+
+                    <div class="main-content">
+                        <div class="wrap-content">
+                            <div class="wrap-detail">
+                                <label>Stock</label>
+                                <span>Required</span>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <input type="number" name="stock" id="stock" value="{{ $data->stock }}">
+                    </div>
+
+                   
+                </div>
+
+
+                <div class="main-product">
+                    <h1>Pricing</h1>
+
+                    <div class="main-content">
+                        <div class="wrap-content">
+                            <div class="wrap-detail">
+                                <label>Subprice</label>
+                                <span>Required</span>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <input type="number" name="subprice" id="subprice" value="{{ $data->subprice }}">
+                    </div>
+
+                
+                    <div class="main-content">
+                        <div class="wrap-content">
+                            <div class="wrap-detail">
+                                <label>Discount</label>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <input type="number" name="discount" id="discount" value="{{ $data->discount }}" onblur="price_discount()">
+                    </div>
+
+
+                    <div class="main-content">
+                        <div class="wrap-content">
+                            <div class="wrap-detail">
+                                <label>Cut-Price</label>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <label type="text" name="rp_discount" id="rp_discount" class="input-stock"></label>
+                    </div>
+
+                    <div class="main-content">
+                        <div class="wrap-content">
+                            <div class="wrap-detail">
+                                <label>Price</label>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <input type="number" name="price" id="price" class="input-stock" value="{{ $data->price }}">
+                    </div>
+
+                   
+                </div>
+
+                <div class="main-product">
+                    <h1>Product Photo</h1>
+                    <div>
+                        <input type="file" name="media" id="media" class="input-photo">
+                        <div class="main-photo" id="display_media">
+                        <i class="bi bi-folder-plus"></i>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="finish-product">
+                    <a class="cancel-product" href="{{ url('pages/seller') }}/{{ Auth::user()->id }}">Cancel</a>
+                    <button type="submit">Upload</button>
+                </div>
         </form>
+        </div>
     </section>
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>

@@ -83,6 +83,7 @@ Route::group([
 ], function(){
     Route::post('/profile', [UserController::class, "create"])->name('profile');
     Route::get('/profile/{id}', [UserController::class, "showProfile"])->name('showProfile');
+    Route::get('/editProfile/{id}', [UserController::class, "editProfile"])->name('editProfile');
     Route::get('/seller/{id}' , [UserController::class, "showSeller"])->name('seller');
 });
 

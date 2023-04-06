@@ -41,7 +41,13 @@
                         <!-- <a class="dropdown-item" href="{{ url('pages/profile') }}">Profile</a> -->
                         <button type="submit" class="button-1">Seller Centre</button>
                 </form>
-                    <button class="button-2">Edit Profile</button>
+                
+                <form action="{{ url('pages/editProfile') }}/{{ Auth::user()->id }}" method="GET">
+                    @csrf
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <button type="submit" class="button-2">Edit Profile</button>
+                </form>
+
                 </div>
 
             </div>

@@ -32,11 +32,13 @@
                             Profile
                         </a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Cart</a></li>
+                        <li><a class="dropdown-item" href="/post/carts">Cart</a></li>
                         @if (\Auth::user() && \Auth::user()->isSeller == true)
-                            <a class="dropdown-item text-dark" href="/pages/seller">
-                            Seller Page
-                            </a>
+                            <form action="{{ url('pages/seller') }}/{{ Auth::user()->id }}" method="GET">
+                                @csrf
+                                <!-- <a class="dropdown-item" href="{{ url('pages/profile') }}">Profile</a> -->
+                                <button type="submit" class="dropdown-item text-dark">Seller Page</button>
+                            </form>
                         @endif
                         @if (\Auth::user() && \Auth::user()->isSeller == false)
                             <a class="dropdown-item text-dark" href="/post/seller">

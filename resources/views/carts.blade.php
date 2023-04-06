@@ -29,27 +29,47 @@
 
     @include('layouts.navbar')
     <section>
-        carts page
+        
 
+    <div class="back-profile">
+            <a href="{{ route('home') }}">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+        <label>Carts</label>
+    </div>
 
-
-
-
+    <div class="main-carts">
         @foreach ($data as $item)
-        <a href="/post/cart/{{ $item->buy_id }}" method="get">
-            <input type="text" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
-            <input type="text" name="id" id="id" value="{{ $item->id }}">
-            <input type="text" name="product_id" id="product_id" value="{{ $item->product_id }}">
-            <input type="text" name="user_id" id="user_id" value="{{ $item->user_id }}">
-            <input type="text" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
-            <input type="number" name="subprice" id="subprice" value="{{ $item->subprice }}">
-            <input type="number" name="quantity" id="quantity" value="{{ $item->quantity }}">
-            <input type="text" name="price" id="price" value="{{ $item->price }}">
+        <form action="/post/cart/{{ $item->buy_id }}" method="get" >
+            
+                <img src="/images/profile.png" />
 
-            <a href="/post/destroycart/{{ $item->id }}">Delete</a>
-            <hr>
+                <div class="wrap-content">
+                    <div class="self-content">
+                        No Order : <input type="text" class="no-order" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
+                    </div>
+
+                    <div class="two-content">
+                        <label>Total</label>
+                         Rp. {{ $item->price }},00
+                         <input type="hidden" name="price" id="price" value="{{ $item->price }}" readonly>
+                    </div>
+                    <button type="submit">Detail</button>
+                </div>
+                 
+
+                <input type="hidden" name="id" id="id" value="{{ $item->id }}">
+                <input type="hidden" name="product_id" id="product_id" value="{{ $item->product_id }}">
+                <input type="hidden" name="user_id" id="user_id" value="{{ $item->user_id }}">
+                <input type="hidden" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
+                <input type="hidden" name="subprice" id="subprice" value="{{ $item->subprice }}">
+                <input type="hidden" name="quantity" id="quantity" value="{{ $item->quantity }}">
+
+
+        </form>
             @endforeach
-        </a>
+    </div>
+
     </section>
 </body>
 

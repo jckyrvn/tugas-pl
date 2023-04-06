@@ -40,6 +40,7 @@
                 </a>
                 <label>Seller</label>
             </div>
+            
 
             <div class="content">
                 <div class="wrap-content">
@@ -50,6 +51,15 @@
                         <p>0812345678910</p>
                     </div>
                 </div>
+
+                <div class="button-content">
+                    <form action="{{ url('seller/orders') }}" method="GET">
+                        @csrf
+                        <!-- <a class="dropdown-item" href="{{ url('pages/profile') }}">Profile</a> -->
+                        <button type="submit" class="button-1">Orders</button>
+                    </form>
+                </div>
+
             </div>
             
             <hr>
@@ -64,20 +74,25 @@
             </div>
             @foreach( $product_seller_all->product as $loop_product )
                 <div class="second-content">
+                
+                <div class="flex-product">
                     <img src="/productimg/{{ $loop_product->media }}" class="img-thumbnail" />
-
-
                     <div class="wrap-product">
                         <h1>{{ $loop_product->name_product }}</h1>
                         <label>Rp.{{ $loop_product->price }},00</label>
                         <span>Product ID : {{ $loop_product->id }}</span>
                         <span>Stock : {{ $loop_product->stock }}</span>
                     </div>
+                </div>
+                  
 
                     <div class="wrap-button">
 
                         <form action="/seller/editproduct/{{ $loop_product->id }}" method="GET">
-                            <button type="submit">Edit</button>
+                            <button type="submit" class="button-1">Edit</button>
+                        </form>
+                        <form action="/seller/destroyproduct/{{ $loop_product->id }}" method="GET">
+                            <button type="submit" class="button-2">Delete</button>
                         </form>
 
                     </div>

@@ -26,5 +26,6 @@ class HomeController extends Controller
         return view('home', [
             'product'=> $posts,
         ]); 
+        // return redirect(`/post/home/?search=$request->input('search')`); 
     }
 }

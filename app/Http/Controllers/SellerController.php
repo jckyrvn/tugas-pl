@@ -146,7 +146,7 @@ class SellerController extends Controller
             
             $data->delete();
             return redirect()
-                ->route('seller.home')
+                ->route('seller')
                 ->with([
                 'success' => 'Data Deleted Succesfully'
             ]);

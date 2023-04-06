@@ -56,7 +56,9 @@
 
           <div class="main-content">
               @foreach($product as $loop_product)
-              <form action="/" class="wrap-content">
+              <form action="/post/detail/{{ $loop_product->id }}" class="" method="get">
+                @csrf
+                <button type="submit" class="wrap-content">
                   <img src="/productimg/{{ $loop_product->media }}" />
                     <div class="text-content">
                         <p>{{ $loop_product->name_product }}</p>
@@ -69,17 +71,15 @@
                             <h1>Rp. {{ $loop_product->price }},00</h1>
                         </div>
                     </div>
-
-                    <div class="button-content">
-                       
-                    </div>
+                </button>
                 </form>
+
                 @endforeach
             </div>    
 
           
 
-        @if (\Auth::user() && \Auth::user()->isAdmin == true)
+        <!-- @if (\Auth::user() && \Auth::user()->isAdmin == true)
         <a class="dropdown-item text-dark" href="/admin/home">
             Admin Page
         </a>
@@ -87,10 +87,9 @@
 
         @if (\Auth::user() && \Auth::user()->isSeller == false)
         <a href="/post/seller">become seller</a>
-        @endif
+        @endif -->
 
 
-        {{ Auth::user()->id }}
     </section>
     
     
