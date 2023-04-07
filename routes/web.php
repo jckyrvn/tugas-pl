@@ -60,6 +60,10 @@ Route::group([
     Route::get('/cart/{id}', [CartController::class, "cart"])->name('cart');
     Route::get('/postcart/{id}', [CartController::class, "postcart"])->name('postcart');
     Route::get('/destroycart/{id}', [CartController::class, "destroycart"])->name('destroycart');
+
+    Route::get('/history/{id}', [UserController::class, "history"])->name('history');
+    Route::post('/updatehistory/{id}', [UserController::class, "updatehistory"])->name('updatehistory');
+
 });
 
 Route::group([
@@ -83,7 +87,7 @@ Route::group([
 ], function(){
     Route::post('/profile', [UserController::class, "create"])->name('profile');
     Route::get('/profile/{id}', [UserController::class, "showProfile"])->name('showProfile');
-    Route::get('/editprofile', [UserController::class, "editProfile"])->name('editProfile');
+    Route::get('/editprofile/{id}', [UserController::class, "editProfile"])->name('editProfile');
     Route::post('/updateprofile', [UserController::class, "updateProfile"])->name('updateProfile');
     Route::get('/seller/{id}' , [UserController::class, "showSeller"])->name('seller');
 });
@@ -102,6 +106,7 @@ Route::group([
     'prefix' => 'buy'
 ], function(){
     Route::get('/postbuy/{id}', [BuyController::class, "postbuy"])->name('postbuy');
+    Route::get('/checkout/{id}', [CartController::class, "checkout"])->name('checkout');
 });
 
 Route::group([
@@ -109,5 +114,6 @@ Route::group([
     'prefix' => 'pdf'
 ], function(){
     Route::get('/home/{id}', [PDFController::class, "home"])->name('pdf.home');
-    Route::get('/exportpdf', [PDFController::class, "exportpdf"])->name('pdf.exportpdf');
+    Route::get('/liveview/{id}', [PDFController::class, "liveview"])->name('pdf.liveview');
+    
 });

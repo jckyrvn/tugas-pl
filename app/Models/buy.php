@@ -15,7 +15,8 @@ class buy extends Model
         'id',
         'user_id',
         'seller_id',
-        'totalprice'
+        'totalprice',
+        'status',
     ];
     
     public function userdetail()

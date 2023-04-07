@@ -34,22 +34,33 @@
 
 
 
+        @foreach ($data as $item)
+        <input type="text" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
+        <input type="text" name="id" id="id" value="{{ $item->id }}">
+        <input type="text" name="product_id" id="product_id" value="{{ $item->product_id }}">
+        <input type="text" name="user_id" id="user_id" value="{{ $item->user_id }}">
+        <input type="text" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
+        <input type="number" name="subprice" id="subprice" value="{{ $item->subprice }}">
+        <input type="number" name="quantity" id="quantity" value="{{ $item->quantity }}">
+        <input type="text" name="price" id="price" value="{{ $item->price }}">
+        <img src="/productimg/{{ $item->product->media }}" alt="">
+        @endforeach
+
+        Name Of Recipent = {{ Auth::user()->name }} <br>
+        Alamat = {{ Auth::user()->address }} <br>
+        Alamat = {{ Auth::user()->number }} <br>
 
         @foreach ($data as $item)
-        <form action="/buy/checkout/{{ $item->buy_id }}" method="get">
+        <form action="/buy/postbuy/{{ $item->buy_id }}" method="get">
             @csrf
             <hr>
-            <input type="text" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
-            <input type="text" name="id" id="id" value="{{ $item->id }}">
+            <input type="text" name="product_name" id="product_name" value="{{ $item->product->name_product }}">
             <input type="text" name="product_id" id="product_id" value="{{ $item->product_id }}">
             <input type="text" name="user_id" id="user_id" value="{{ $item->user_id }}">
             <input type="text" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
             <input type="number" name="subprice" id="subprice" value="{{ $item->subprice }}">
             <input type="number" name="quantity" id="quantity" value="{{ $item->quantity }}">
             <input type="text" name="price" id="price" value="{{ $item->price }}">
-            <img src="/productimg/{{ $item->product->media }}" alt="">
-
-            <a href="/post/destroycart/{{ $item->id }}">Delete</a>
 
             @endforeach
 
@@ -60,6 +71,9 @@
 
             <button type="submit">Process</button>
         </form>
+
+
+
     </section>
 </body>
 

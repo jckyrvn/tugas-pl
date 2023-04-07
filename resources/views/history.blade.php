@@ -67,9 +67,13 @@
 
         <hr>
 
-        <form action="/seller/updateorders/{{ $dataall2->id }}" method="post">
+        <form action="/pdf/home/{{ $dataall2->id }}" method="get">
+            <button type="submit">Download PDF</button>
+        </form>
+
+        <form action="/post/updatehistory/{{ $dataall2->id }}" method="post">
             @csrf
-            <button type="submit">Ship</button>
+            <button type="submit">Order Received</button>
         </form>
 
     </section>

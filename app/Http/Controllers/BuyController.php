@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\buy;
 use App\Models\Product;
+use App\Models\tempbuy;
 use App\Models\buydetail;
 use App\Models\tempcarts;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class BuyController extends Controller
     public function postbuy(Request $request, $id){
         $user = Auth::user()->id;
         $data3 = tempcarts::where('buy_id', $id)->first();
+        $tempbuy = tempbuy::where('id', $id)->first();
         $sellerid = $data3->seller_id;
 
         $sum1 = tempcarts::where('user_id', $user)->sum('price');
@@ -22,7 +24,6 @@ class BuyController extends Controller
         
 
         $validator = Validator::make($request->all(), [
-            'buy_id'=>'required',
             'user_id'=>'required',
             'seller_id'=>'required',
             'product_id'=>'required',
@@ -34,7 +35,7 @@ class BuyController extends Controller
         if($validator->fails())
         {
             return redirect()
-                ->route('cart')
+                ->route('home')
                 ->with([
                 'error' => 'Oops, Try Again'
             ]);
@@ -45,6 +46,8 @@ class BuyController extends Controller
                 'seller_id' => $sellerid,
                 'totalprice' => $sum1
             ]);
+
+            $tempbuy->delete();
 
             foreach ($dataall as $data){
                 buydetail::create([

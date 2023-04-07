@@ -29,34 +29,35 @@
 
     @include('layouts.navbar')
     <section>
-        
 
-    <div class="back-profile">
+
+        <div class="back-profile">
             <a href="{{ route('home') }}">
                 <i class="bi bi-chevron-left"></i>
             </a>
-        <label>Carts</label>
-    </div>
+            <label>Carts</label>
+        </div>
 
-    <div class="main-carts">
-        @foreach ($data as $item)
-        <form action="/post/cart/{{ $item->buy_id }}" method="get" >
-            
+        <div class="main-carts">
+            @foreach ($data as $item)
+            <form action="/post/cart/{{ $item->id }}" method="get">
+
                 <img src="/images/profile.png" />
 
                 <div class="wrap-content">
                     <div class="self-content">
-                        No Order : <input type="text" class="no-order" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
+                        No Order : <input type="text" class="no-order" name="buy_id" id="buy_id" value="{{ $item->id }}"
+                            readonly>
                     </div>
 
                     <div class="two-content">
                         <label>Total</label>
-                         Rp. {{ $item->price }},00
-                         <input type="hidden" name="price" id="price" value="{{ $item->price }}" readonly>
+                        Rp. {{ $item->totalprice }},00
+                        <input type="hidden" name="price" id="price" value="{{ $item->price }}" readonly>
                     </div>
                     <button type="submit">Detail</button>
                 </div>
-                 
+
 
                 <input type="hidden" name="id" id="id" value="{{ $item->id }}">
                 <input type="hidden" name="product_id" id="product_id" value="{{ $item->product_id }}">
@@ -66,9 +67,9 @@
                 <input type="hidden" name="quantity" id="quantity" value="{{ $item->quantity }}">
 
 
-        </form>
+            </form>
             @endforeach
-    </div>
+        </div>
 
     </section>
 </body>

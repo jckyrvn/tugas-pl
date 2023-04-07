@@ -31,11 +31,11 @@
 
             <div class="content">
                 <div class="wrap-content">
-                    <img src="{{ asset('images/profile.png') }}">
+                    <img src="/profileimg/{{ Auth::user()->profile }}">
                     <div class="user">
                         <label>{{ Auth::user()->name }}</label>
                         <p>{{ Auth::user()->email }}</p>
-                        <p>0812345678910</p>
+                        <p>{{ Auth::user()->number }}</p>
                     </div>
                 </div>
             </div>

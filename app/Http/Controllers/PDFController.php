@@ -30,7 +30,15 @@ class PDFController extends Controller
         return $pdf->download('invoice.pdf');
     }
 
-    public function exportpdf(){
-        
+    public function liveview($id){
+
+        $data1 = buydetail::where('buy_id', $id)->with('productdetail')->get();
+        $data2 = buy::where('id', $id)->with('userdetail')->get();
+        $data3 = buydetail::where('buy_id', $id)->with('sellerdetail')->first();
+        return view('pdf.liveview')->with([
+            'data1' => $data1,
+            'data2' => $data2,
+            'data3' => $data3,
+        ]);
     }
 }

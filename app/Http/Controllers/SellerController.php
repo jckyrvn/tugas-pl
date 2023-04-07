@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\buy;
+use App\Models\User;
 use App\Models\Product;
+use App\Models\buydetail;
 use App\Models\tempmerchant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class SellerController extends Controller
 {
@@ -203,25 +205,36 @@ class SellerController extends Controller
     }
 
     public function editorders($id){
-        $data = buy::where('id', $id)->get();
+        $userid = Auth::user()->id;
+        $user = User::find($userid);
+        $dataall2 = buy::where('id', $id)->first();
+        $dataall = buydetail::where('buy_id', $id)->with('productdetail')->get();
 
         return view ('seller.editorders')->with([
-            'data' => $data
+            'dataall2' => $dataall2,
+            'dataall' => $dataall,
+            'user' => $user,
         ]);
     }
 
     public function updateorders(Request $request, $id){
         $data = buy::find($id);
-        if($data){
-            $data->status = $request->input('status');
 
+        if($data){
+            $data->status = 'Shipping Order';
             $data->save();
 
-                return redirect()
-                    ->route('seller.home')
-                    ->with([
-                    'success' => 'Data Updated Succesfully'
-                ]);
+            return redirect()
+                ->route('home')
+                ->with([
+                'success' => 'Data Updated Succesfully'
+            ]);
+        } else {
+            return redirect()
+                ->route('home')
+                ->with([
+                'error' => 'Oops, Try Again'
+            ]);
         }
     }
 }

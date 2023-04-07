@@ -34,9 +34,11 @@
         {{ $dataall }}
         @foreach ($dataall as $item)
         <hr>
-        <form action="/orders/{{ $item->id }}" method="get">
+        <form action="/seller/orders/{{ $item->id }}" method="get">
             <input type="text" name="status" id="status" value="{{ $item->id }}">
             <input type="text" name="status" id="status" value="{{ $item->status }}">
+
+            <button type="submit">Edit Orders</button>
         </form>
         @endforeach
 

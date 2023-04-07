@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\buy;
+use App\Models\buydetail;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -66,15 +67,17 @@ class UserController extends Controller
 
     public function showProfile(){
         $userid = Auth::user()->id;
+        $user = User::find($userid);
         $dataall = buy::where('user_id', $userid)->with('history')->get();
 
         return view ('pages/profile')->with([
-            'dataall' => $dataall
+            'dataall' => $dataall,
+            'user' => $user,
         ]);
     }
-    public function editProfile($id){
-        return view('pages/editprofile');
-    }
+    // public function editProfile($id){
+    //     return view('pages/editprofile');
+    // }
     public function showSeller($id){
         $product_seller_all = User::with(['product'])->where('id', $id)->first();
         return view('pages/centre', [
@@ -86,15 +89,13 @@ class UserController extends Controller
     
     }
 
-    public function editProfile(){
-        $userid = Auth::user()->id;
-
-        $cekuser = User::find($userid);
+    public function editProfile($id){
+        $cekuser = User::find($id);
 
         if($cekuser!=null){            
-            return view('pages/editprofile')->with([
-            'cekuser' => $cekuser
-        ]);
+            return view('pages/editprofile', [
+                'cekuser' => $cekuser,
+            ]);
         } else {    
             return redirect()
                     ->route('home')
@@ -153,9 +154,45 @@ class UserController extends Controller
                 return redirect()
                 ->route('home')
                 ->with([
-                'error' => 'Data anda tidak berhasil di update'
+                'error' => 'Data Updated Succesfully'
             ]);
             }
+        }
+    }
+
+    public function history($id){
+        $userid = Auth::user()->id;
+        $user = User::find($userid);
+        $dataall2 = buy::where('id', $id)->first();
+        $dataall = buydetail::where('buy_id', $id)->with('productdetail')->get();
+
+        // return $dataall;
+
+        return view ('history')->with([
+            'dataall2' => $dataall2,
+            'dataall' => $dataall,
+            'user' => $user,
+        ]);
+    }
+
+    public function updatehistory($id){
+        $data = buy::find($id);
+
+        if($data){
+            $data->status = 'Order Received';
+            $data->save();
+
+            return redirect()
+                ->route('home')
+                ->with([
+                'success' => 'Data Updated Successfully'
+            ]);
+        } else {
+            return redirect()
+                ->route('home')
+                ->with([
+                'error' => 'Oops, Try Again'
+            ]);
         }
     }
 }

@@ -31,11 +31,11 @@
 
             <div class="content">
                 <div class="wrap-content">
-                    <img src="{{ asset('images/profile.png') }}">
+                    <img src="/profileimg/{{ Auth::user()->profile }}">
                     <div class="user">
                         <label>{{ Auth::user()->name }}</label>
                         <p>{{ Auth::user()->email }}</p>
-                        <p>0812345678910</p>
+                        <p>{{ Auth::user()->number }}</p>
                     </div>
                 </div>
 
@@ -45,13 +45,13 @@
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <!-- <a class="dropdown-item" href="{{ url('pages/profile') }}">Profile</a> -->
                         <button type="submit" class="button-1">Seller Centre</button>
-                </form>
-                
-                <form action="{{ url('pages/editProfile') }}/{{ Auth::user()->id }}" method="GET">
-                    @csrf
-                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    <button type="submit" class="button-2">Edit Profile</button>
-                </form>
+                    </form>
+
+                    <form action="{{ url('pages/editprofile') }}/{{ Auth::user()->id }}" method="GET">
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        <button type="submit" class="button-2">Edit Profile</button>
+                    </form>
 
                 </div>
 
@@ -61,13 +61,22 @@
 
             <div class="history-profile">
                 <label>History</label>
-
-                {{ $dataall }}
             </div>
 
 
             <div class="second-content">
                 <div>
+                    @foreach ($dataall as $item)
+                    <hr>
+                    <form action="/post/history/{{ $item->id }}" method="get">
+                        No. Order : {{ $item->id }} <br>
+                        Status : {{ $item->status }} <br>
+                        Order Date : {{ $item->created_at }} <br>
+                        Total : {{ $item->totalprice }} <br>
+
+                        <button type="submit">Detail</button>
+                    </form>
+                    @endforeach
 
                 </div>
             </div>

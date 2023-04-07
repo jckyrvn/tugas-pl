@@ -10,8 +10,11 @@ class DetailController extends Controller
 {
     public function detail($id)
     {
-        $buytotal = buy::count();
+        $product = Product::find($id);
+        $sellerid = $product->seller_id;
+        $buytotal = buy::where('seller_id', $sellerid)->count();
         $data = Product::find($id);
+
         return view('detail')->with([
             'data' => $data,
             'buytotal' => $buytotal
