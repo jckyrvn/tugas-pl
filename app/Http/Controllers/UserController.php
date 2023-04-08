@@ -165,6 +165,7 @@ class UserController extends Controller
         $user = User::find($userid);
         $dataall2 = buy::where('id', $id)->first();
         $dataall = buydetail::where('buy_id', $id)->with('productdetail')->get();
+        $sum1 = buydetail::where('buy_id', $id)->sum('price');
 
         // return $dataall;
 
@@ -172,6 +173,7 @@ class UserController extends Controller
             'dataall2' => $dataall2,
             'dataall' => $dataall,
             'user' => $user,
+            'sum1' => $sum1
         ]);
     }
 

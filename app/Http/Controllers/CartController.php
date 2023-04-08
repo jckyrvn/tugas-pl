@@ -150,9 +150,28 @@ class CartController extends Controller
     {
         $user = Auth::user()->id;
         $data = tempcarts::where('id', $id);
+        $data2 = tempcarts::where('id', $id)->first();
+
+        $cektempcarts = tempcarts::select('buy_id')->where('id', $id)->first();
+        $buy_id = $cektempcarts->buy_id;
+        $cekbuyid = tempcarts::where('buy_id', $buy_id)->count();
+
+        // return $cekbuyid;
 
         if($data){
-            $data->delete();
+            if($cekbuyid!=1){
+                $tempbuy = tempbuy::where('id', $buy_id)->first();
+                $tempbuy->update([
+                    'totalprice' => $tempbuy->totalprice - $data2->price
+                ]);
+
+                $data->delete();
+            } else {
+                $tempbuy = tempbuy::where('id', $buy_id)->first();
+                $tempbuy->delete();
+                $data->delete();
+            }
+            
             return redirect()
                 ->route('carts')
                 ->with([

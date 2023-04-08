@@ -205,10 +205,11 @@ class SellerController extends Controller
     }
 
     public function editorders($id){
-        $userid = Auth::user()->id;
-        $user = User::find($userid);
+        // $userid = Auth::user()->id;
         $dataall2 = buy::where('id', $id)->first();
         $dataall = buydetail::where('buy_id', $id)->with('productdetail')->get();
+        $userid = $dataall2->user_id;
+        $user = User::find($userid);
 
         return view ('seller.editorders')->with([
             'dataall2' => $dataall2,

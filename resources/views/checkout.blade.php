@@ -29,13 +29,13 @@
 
     @include('layouts.navbar')
     <section>
-        
-            <div class="back-profile">
-                <a href="{{ route('carts') }}">
-                    <i class="bi bi-chevron-left"></i>
-                </a>
-                <label>Checkout</label>
-            </div>
+
+        <div class="back-profile">
+            <a href="{{ route('carts') }}">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+            <label>Checkout</label>
+        </div>
 
 
         <div class="main-checkout">
@@ -78,7 +78,7 @@
                     @else
                     <input type="text" placeholder="You Must Add Number!" readonly />
                     @endif
-                    
+
                     <label> Address </label>
                     @if( Auth::user()->address != null)
                     <input type="text" value="{{ Auth::user()->address }}" readonly />
@@ -86,9 +86,9 @@
                     <input type="text" placeholder="You Must Add Address!" readonly />
                     @endif
                     @if( Auth::user()->address == null)
-                        <a href="{{ url('pages/profile') }}/{{ Auth::user()->id }}">
-                           Add Profile
-                        </a>
+                    <a href="{{ url('pages/profile') }}/{{ Auth::user()->id }}">
+                        Add Profile
+                    </a>
                     @endif
                 </div>
 
@@ -97,7 +97,7 @@
                 <div class="wrap-total">
                     <h1>Total</h1>
                     @foreach ($data as $item)
-            
+
                     <div class="total-left">
                         <label>{{ $item->product->name_product }}</label>
                         <span>{{ $item->quantity }} * {{ $item->subprice }} = <p> Rp. {{ $item->price }},00</p></span>
@@ -106,15 +106,16 @@
                     @endforeach
                     <div class="total-right">
                         <span>Subtotal<p>{{ $sum1 }},00</p></span>
-                        <span>Biaya Layanan<p>0,00</p></span>
-                        <span>Biaya Ongkir<p>0,00</p></span>
+                        <span>Biaya Layanan<p>FREE</p></span>
+                        <span>Biaya Ongkir<p>FREE</p></span>
                         <span>Total<p>{{ $sum1 }},00</p></span>
                     </div>
                 </div>
                 <form action="/buy/postbuy/{{ $item->buy_id }}" method="get">
                     @csrf
-                    
-                    <input type="hidden" name="product_name" id="product_name" value="{{ $item->product->name_product }}">
+
+                    <input type="hidden" name="product_name" id="product_name"
+                        value="{{ $item->product->name_product }}">
                     <input type="hidden" name="product_id" id="product_id" value="{{ $item->product_id }}">
                     <input type="hidden" name="user_id" id="user_id" value="{{ $item->user_id }}">
                     <input type="hidden" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
@@ -125,9 +126,9 @@
 
                     <button type="submit">Checkout</button>
                 </form>
-                </div>
-            
-    
+            </div>
+
+
         </div>
 
 

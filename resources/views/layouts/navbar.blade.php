@@ -16,7 +16,9 @@
 <body>
     <div class="nav-container">
         <section>
-            <img src="{{ asset('images/logo.png') }}">
+            <a href="/post/home">
+                <img src="{{ asset('images/logo.png') }}">
+            </a>
             @if(request()->fullUrl() == url('post/home') && url('post/home/search') )
             <form action="{{ route('search') }}" method="POST">
                 @csrf
@@ -27,7 +29,7 @@
             <div class="dropdown">
                 <div class="nav-profile" data-bs-toggle="dropdown" aria-expanded="false">
                     @if(Auth::user()->profile == null)
-                    <span>{{ substr(Auth::user()->name  , 0 ,1) }}</span>
+                    <span>{{ substr(Auth::user()->name , 0 ,1) }}</span>
                     @else
                     <img src="/profileimg/{{ Auth::user()->profile }}">
                     @endif
