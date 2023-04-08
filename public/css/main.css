@@ -9,6 +9,9 @@ html{
 section{
     padding: 0px 174px;
 }
+input:focus{
+    outline: none;
+}
 .logo-tab{
     width: 1px;
 }
@@ -202,6 +205,19 @@ section{
     flex-direction: row;
     cursor: pointer;
 }
+.nav-container .dropdown .nav-profile span{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #0163D1;
+    font-weight: bold;
+}
 .nav-container .dropdown .nav-profile img{
     width: 50px;
     height: 50px;
@@ -280,6 +296,10 @@ section .main-profile .content{
     align-items: center;
     justify-content: space-between;
 }
+section .main-profile p{
+    font-size: 40px;
+    color: #838383;
+}
 section .main-profile .content .wrap-content{
     display: flex;
     flex-direction: row;
@@ -290,6 +310,19 @@ section .main-profile .content .wrap-content img{
     height: 250px;
     border-radius: 500px;
     object-fit: cover;
+}
+section .main-profile .content .wrap-content span{
+    width: 250px;
+    height: 250px;
+    background-color: #0163D1;
+    border-radius: 500px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
 }
 section .main-profile .content .user{
     margin-left: 61px;
@@ -364,7 +397,6 @@ section .main-profile .second-content{
     border-width: 1px;
     border-color: #E8E8E8;
     margin-bottom: 41px;
-
 }
 section .main-profile .second-content img{
     width: 374px;
@@ -425,6 +457,106 @@ section .main-profile .second-content .wrap-button .button-2{
     display: flex;
     justify-content: center;
 }
+section .main-profile .second-content{
+    padding: 34px 27px;
+    align-items: center;
+}
+section .main-profile .second-content .wrap-history{
+    display: flex;
+    flex-direction: column;
+}
+section .main-profile .second-content .wrap-history label{
+    font-size: 18px;
+}
+section .main-profile .second-content .wrap-history p{
+    font-size: 18px;
+}
+section .main-profile .second-content .wrap-history span{
+    display: flex;
+    flex-direction: column;
+    color: #858585;
+    font-size: 24px;
+}
+section .main-profile .second-content .wrap-history span p{
+    color: black;
+    font-size: 38px;
+}
+section .main-profile .second-content button{
+    width: 256px;
+    height: 69px;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #E8E8E8;
+    color: white;
+    background-color: #0163D1; 
+    font-weight: bold;
+    font-size: 24px;
+}
+
+section .main-profile form{
+    display: flex;
+    flex-direction: column;
+}
+section .main-profile form .wrap-profile{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   padding: 20px 40px;
+}
+section .main-profile form .wrap-profile .input-1{
+    display: flex;
+    flex-direction: column;
+}
+section .main-profile form .wrap-profile .input-1 label{
+    font-size: 40px;
+    font-weight: bold;
+}
+section .main-profile form .wrap-profile .input-1 input{
+    width: 621px;
+    height: 83px;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: #B6B6B6;
+    font-size: 24px;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+section .main-profile form .wrap-profile .input-2{
+    display: flex;
+    flex-direction: column;
+}
+section .main-profile form .wrap-profile .input-2 label{
+    font-size: 40px;
+    font-weight: bold;
+}
+section .main-profile form .wrap-profile .input-2 input{
+    width: 621px;
+    height: 83px;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: #B6B6B6;
+    font-size: 24px;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+section .main-profile form .wrap-button{
+    display: flex;
+    justify-content: center;
+    margin: 30px 30px;
+}
+section .main-profile form .wrap-button button{
+    background-color: #0163D1;
+    width: 700px;
+    height: 75px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    border: none;
+}
+
 
 
 
@@ -661,10 +793,12 @@ section .container-detail .main-detail{
 section .container-detail .main-detail .main-text label{
     font-size: 41px;
     font-weight: bold;
+    word-break: break-all;
 }
 section .container-detail .main-detail .main-text p{
     font-size: 19px;
     color: #6A6A6A;
+    word-break: break-all;
 }
 section .container-detail .main-detail .discount-label{
     display: flex;
@@ -782,7 +916,7 @@ section .main-carts{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 section .main-carts form{
     display: flex;
@@ -795,6 +929,7 @@ section .main-carts form img{
     border-style: solid;
     border-width: 1px;
     border-color: #e8e8e8;
+    object-fit: cover;
 }
 section .main-carts form .wrap-content{
     display: flex; 
@@ -807,11 +942,15 @@ section .main-carts form .wrap-content{
     text-overflow: ellipsis;
 
     border-style: solid;
-    border-width: 1px 1px 1px 0px;
+    border-width: 1px 1px 1px 1px;
     border-color: #e8e8e8;
 }
 section .main-carts form .wrap-content .self-content{
     font-size: 18px;
+    width: 327px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 section .main-carts form .wrap-content .self-content .no-order{
     border: none;
@@ -846,4 +985,170 @@ section .main-carts form .wrap-content button{
     font-weight: bold;
     border: none;
     border-radius: 5px;
+}
+section .main-carts form .wrap-content .destroy-carts{
+    width: 101px;
+    height: 40.8px;
+    background-color: #CE3030;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+
+/* CHECKOUT */
+section .main-checkout{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+section .main-checkout .wrap-left{
+    display: flex;
+    flex-direction: column;
+}
+section .main-checkout .wrap-left .second-left{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+section .main-checkout .wrap-left .second-left img{
+    width: 374px;
+    height: 313.84px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    object-fit: cover;
+}
+section .main-checkout .wrap-left .second-left .wrap-product{
+    display: flex; 
+    flex-direction: column;
+    padding: 57px 57px 57px 20px;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #e8e8e8;
+}
+section .main-checkout .wrap-left .second-left .wrap-product label{
+    font-size: 16px;
+    color: #252525;
+    font-weight: bold;
+    width: 327px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+section .main-checkout .wrap-right{
+    display: flex;
+    flex-direction: column;
+    width: 702px;
+    height: auto;
+}
+section .main-checkout .wrap-right .wrap-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+section .main-checkout .wrap-right .wrap-content img{
+    width: 82px;
+    height: 113px;
+    margin-right: 43px;
+}
+section .main-checkout .wrap-right .wrap-content p{
+    font-size: 21px;
+    color: #727272;
+}
+section .main-checkout .wrap-right .content-detail{
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    padding: 19px 31px;
+    margin-bottom: 20px;
+}
+section .main-checkout .wrap-right .content-detail h1{
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+section .main-checkout .wrap-right .content-detail label{
+    font-size: 16px;
+    color: #858585;
+    margin-bottom: 6px;
+}
+section .main-checkout .wrap-right .content-detail input{
+    height: 47px;
+    padding: 0px 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: #cdcdcd;
+    margin-bottom: 6px;
+}
+
+
+section .main-checkout .wrap-right .wrap-total{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e8e8e8;
+    padding: 19px 31px;
+}
+section .main-checkout .wrap-right .wrap-total h1{
+    font-size: 40px;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+section .main-checkout .wrap-right .wrap-total .total-left{
+    display: flex;
+    flex-direction: column;
+}
+section .main-checkout .wrap-right .wrap-total .total-left label{
+    font-size: 16px;
+    font-weight: bold;
+}
+section .main-checkout .wrap-right .wrap-total .total-left span{
+    display: flex;
+    flex-direction: row;
+    color: #838383;
+    font-size: 13px;
+}
+section .main-checkout .wrap-right .wrap-total .total-left span p{
+    color: black;
+    font-weight: bold;
+}
+section .main-checkout .wrap-right .wrap-total .total-right{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+section .main-checkout .wrap-right .wrap-total .total-right span{
+    display: flex;
+    flex-direction: row;
+    width: 235px;
+    justify-content: space-between;
+    color: #838383;
+    font-weight: bold;
+}
+section .main-checkout .wrap-right .wrap-total .total-right span p{
+    color: black;
+    font-weight: bold;
+}
+section .main-checkout .wrap-right form button{
+    margin: 31px 0px;
+    background-color: #0163D1;
+    border-radius: 5px;
+    width: 702px;
+    height: 51px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
 }

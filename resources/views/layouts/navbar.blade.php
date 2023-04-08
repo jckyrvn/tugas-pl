@@ -26,7 +26,11 @@
             @endif
             <div class="dropdown">
                 <div class="nav-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                    @if(Auth::user()->profile == null)
+                    <span>{{ substr(Auth::user()->name  , 0 ,1) }}</span>
+                    @else
                     <img src="/profileimg/{{ Auth::user()->profile }}">
+                    @endif
                     <p>{{ Auth::user()->name }}</p>
                 </div>
                 <ul class="dropdown-menu">

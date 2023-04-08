@@ -29,35 +29,59 @@
 
     @include('layouts.navbar')
     <section>
-        cart page
+
+        <div class="back-profile">
+            <a href="{{ route('carts') }}">
+                <i class="bi bi-chevron-left"></i>
+            </a>
+            <label>Cart</label>
+        </div>
 
 
 
+        <div class="main-carts">
+            @foreach ($data as $item)
+            <form action="/post/destroycart/{{ $item->id }}" method="get">
+                <img src="/productimg/{{ $item->product->media }}" alt="">
+                <div class="wrap-content">
+                    <div class="self-content">
+                        {{ $item->product->name_product }}
+                    </div>
 
+                    <div class="two-content">
+                        Rp. {{ $item->price }},00
+                        <input type="hidden" name="price" id="price" value="{{ $item->price }}" readonly>
+                        <div class="three-content">
+                            Quantity: {{ $item->quantity }}
+                        </div>
+                    </div>
+                    <button type="submit" class="destroy-carts">Delete</button>
+                </div>
+                
+            <input type="hidden" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
+            <input type="hidden" name="id" id="id" value="{{ $item->id }}">
+            <input type="hidden" name="product_id" id="product_id" value="{{ $item->product_id }}">
+            <input type="hidden" name="user_id" id="user_id" value="{{ $item->user_id }}">
+            <input type="hidden" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
+            <input type="hidden" name="subprice" id="subprice" value="{{ $item->subprice }}">
+            <input type="hidden" name="quantity" id="quantity" value="{{ $item->quantity }}">
+            <input type="hidden" name="price" id="price" value="{{ $item->price }}">
 
-        @foreach ($data as $item)
+            </form>
+            @endforeach
+        </div>
+        
         <form action="/buy/checkout/{{ $item->buy_id }}" method="get">
             @csrf
-            <hr>
-            <input type="text" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
-            <input type="text" name="id" id="id" value="{{ $item->id }}">
-            <input type="text" name="product_id" id="product_id" value="{{ $item->product_id }}">
-            <input type="text" name="user_id" id="user_id" value="{{ $item->user_id }}">
-            <input type="text" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
-            <input type="number" name="subprice" id="subprice" value="{{ $item->subprice }}">
-            <input type="number" name="quantity" id="quantity" value="{{ $item->quantity }}">
-            <input type="text" name="price" id="price" value="{{ $item->price }}">
-            <img src="/productimg/{{ $item->product->media }}" alt="">
-
-            <a href="/post/destroycart/{{ $item->id }}">Delete</a>
-
-            @endforeach
-
-            <hr>
+            <input type="hidden" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
+            <input type="hidden" name="id" id="id" value="{{ $item->id }}">
+            <input type="hidden" name="product_id" id="product_id" value="{{ $item->product_id }}">
+            <input type="hidden" name="user_id" id="user_id" value="{{ $item->user_id }}">
+            <input type="hidden" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
+            <input type="hidden" name="subprice" id="subprice" value="{{ $item->subprice }}">
+            <input type="hidden" name="quantity" id="quantity" value="{{ $item->quantity }}">
+            <input type="hidden" name="price" id="price" value="{{ $item->price }}">
             <input type="text" name="totalprice" id="totalprice" value="{{ $sum1 }}">
-            <hr>
-
-
             <button type="submit">Process</button>
         </form>
     </section>

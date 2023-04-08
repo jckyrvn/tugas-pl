@@ -31,7 +31,11 @@
 
             <div class="content">
                 <div class="wrap-content">
+                @if(Auth::user()->profile == null)
+                    <span>{{ substr( Auth::user()->name,  0 ,1) }}</span>
+                    @else
                     <img src="/profileimg/{{ Auth::user()->profile }}">
+                    @endif
                     <div class="user">
                         <label>{{ Auth::user()->name }}</label>
                         <p>{{ Auth::user()->email }}</p>
@@ -40,19 +44,43 @@
                 </div>
             </div>
             <hr>
-            {{ $cekuser }}
 
             <form action="{{ route('updateProfile') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="text" name="name" id="name" value="{{ $cekuser->name }}"><br>
-                <input type="text" name="email" id="email" value="{{ $cekuser->email }}" readonly><br>
-                <input type="text" name="address" id="address" value="{{ $cekuser->address }}"><br>
-                <input type="text" name="merchant_address" id="merchant_address"
-                    value="{{ $cekuser->merchant_address }}"><br>
-                <input type="file" name="profile" id="profile"><br>
-                <input type="text" name="number" id="number" value="{{ $cekuser->number }}"><br>
+                <div class="wrap-profile">
 
-                <button type="submit">updateprofile</button>
+                    <div class="input-1">
+                        <label>Name :</label>
+                        <input type="text" name="name" id="name" value="{{ $cekuser->name }}">
+                        <label>Email : </label>
+                        <input type="text" name="email" id="email" value="{{ $cekuser->email }}" readonly>
+                        <label>Address : </label>
+                        <input type="text" name="address" id="address" value="{{ $cekuser->address }}" placeholder="Add Address">
+                    </div>
+
+                    <div class="input-2">
+                        <label>Merchant Address :</label>
+                        @if($cekuser->isSeller == 0)
+                        <input type="text" name="merchant_address" id="merchant_address"
+                            placeholder="You Are Not Seller" readonly>
+                        @else
+                        <input type="text" name="merchant_address" id="merchant_address"
+                            value="{{ $cekuser->merchant_address }}" >
+                        @endif
+                        <label>Image Profile :</label>
+                        <input type="file" name="profile" id="profile">
+                        <label>Phone Number :</label>
+                        <input type="text" name="number" id="number" value="{{ $cekuser->number }}">
+                    </div>
+
+                </div>
+
+                <div class="wrap-button">
+                    <button type="submit">Update Profile</button>
+                </div>
+
+                <hr>
+
             </form>
         </div>
     </section>

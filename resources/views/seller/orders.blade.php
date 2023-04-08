@@ -29,18 +29,37 @@
 
     @include('layouts.navbar')
     <section>
-        <b>orders</b>
 
-        {{ $dataall }}
+    <div class="main-profile">
+
+        <div class="back-profile">
+                <a href="{{ url('pages/profile') }}/{{ Auth::user()->id }}">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+                <label>Orders</label>
+            </div>
+
         @foreach ($dataall as $item)
-        <hr>
-        <form action="/seller/orders/{{ $item->id }}" method="get">
-            <input type="text" name="status" id="status" value="{{ $item->id }}">
-            <input type="text" name="status" id="status" value="{{ $item->status }}">
+        <form action="/seller/orders/{{ $item->id }}" class="second-content" method="get">
+            <input type="hidden" name="status" id="status" value="{{ $item->id }}">
+            <input type="hidden" name="status" id="status" value="{{ $item->status }}">
+
+                        <div class="wrap-history">
+                            <label>No. Order : {{ $item->id }}</label> 
+                            <p>Status : {{ $item->status }} </p>
+                             
+
+                            <span>Order Date : <p>{{ date('d-m-y', strtotime( $item->created_at )) }}</p> </span>
+                            <span>Total : <p>Rp. {{ $item->totalprice }},00</p> </span>
+                             
+                        </div>
 
             <button type="submit">Edit Orders</button>
         </form>
         @endforeach
+
+
+    </div>
 
 </body>
 

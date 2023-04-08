@@ -44,11 +44,15 @@
 
             <div class="content">
                 <div class="wrap-content">
-                    <img src="{{ asset('images/profile.png') }}">
+                @if(Auth::user()->profile == null)
+                    <span>{{ substr( Auth::user()->name,  0 ,1) }}</span>
+                    @else
+                    <img src="/profileimg/{{ Auth::user()->profile }}">
+                    @endif
                     <div class="user">
                         <label>{{ Auth::user()->name }}</label>
                         <p>{{ Auth::user()->email }}</p>
-                        <p>0812345678910</p>
+                        <p>{{ Auth::user()->number }}</p>
                     </div>
                 </div>
 
@@ -101,7 +105,7 @@
             @endforeach
 
             @if (\Auth::user() && \Auth::user()->isSeller == false)
-                <p>Become Seller and add your items!</p>
+                <p>~ Become Seller and add your items! ~</p>
             @endif
           </div>
     </section>

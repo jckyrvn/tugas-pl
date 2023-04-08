@@ -42,8 +42,6 @@
             @foreach ($data as $item)
             <form action="/post/cart/{{ $item->id }}" method="get">
 
-                <img src="/images/profile.png" />
-
                 <div class="wrap-content">
                     <div class="self-content">
                         No Order : <input type="text" class="no-order" name="buy_id" id="buy_id" value="{{ $item->id }}"

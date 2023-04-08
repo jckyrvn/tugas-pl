@@ -31,7 +31,11 @@
 
             <div class="content">
                 <div class="wrap-content">
+                    @if(Auth::user()->profile == null)
+                    <span>{{ substr( Auth::user()->name,  0 ,1) }}</span>
+                    @else
                     <img src="/profileimg/{{ Auth::user()->profile }}">
+                    @endif
                     <div class="user">
                         <label>{{ Auth::user()->name }}</label>
                         <p>{{ Auth::user()->email }}</p>
@@ -64,22 +68,20 @@
             </div>
 
 
-            <div class="second-content">
-                <div>
-                    @foreach ($dataall as $item)
-                    <hr>
-                    <form action="/post/history/{{ $item->id }}" method="get">
-                        No. Order : {{ $item->id }} <br>
-                        Status : {{ $item->status }} <br>
-                        Order Date : {{ $item->created_at }} <br>
-                        Total : {{ $item->totalprice }} <br>
+            @foreach ($dataall as $item)
+                    <form action="/post/history/{{ $item->id }}" class="second-content" method="get">
+                        <div class="wrap-history">
+                            <label>No. Order : {{ $item->id }}</label> 
+                            <p>Status : {{ $item->status }} </p>
+                             
 
-                        <button type="submit">Detail</button>
+                            <span>Order Date : <p>{{ date('d-m-y', strtotime( $item->created_at )) }}</p> </span>
+                            <span>Total : <p>Rp. {{ $item->totalprice }},00</p> </span>
+                             
+                        </div>
+                        <button type="submit" >Detail</button>
                     </form>
                     @endforeach
-
-                </div>
-            </div>
 
         </div>
     </section>
