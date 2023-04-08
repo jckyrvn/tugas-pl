@@ -197,7 +197,7 @@ class SellerController extends Controller
 
     public function orders(){
         $seller = Auth::user()->id;
-        $dataall = buy::where('seller_id', $seller)->with('buydetail')->get();
+        $dataall = buy::where('seller_id', $seller)->with('buydetail')->latest()->get();
 
         return view ('seller.orders')->with([
             'dataall' => $dataall
@@ -210,11 +210,14 @@ class SellerController extends Controller
         $dataall = buydetail::where('buy_id', $id)->with('productdetail')->get();
         $userid = $dataall2->user_id;
         $user = User::find($userid);
+        $sum1 = buydetail::where('buy_id', $id)->sum('price');
+
 
         return view ('seller.editorders')->with([
             'dataall2' => $dataall2,
             'dataall' => $dataall,
             'user' => $user,
+            'sum1' => $sum1,
         ]);
     }
 

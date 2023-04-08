@@ -33,7 +33,7 @@
     <div class="main-profile">
 
         <div class="back-profile">
-                <a href="{{ url('pages/profile') }}/{{ Auth::user()->id }}">
+                <a href="{{ url('pages/seller') }}/{{ Auth::user()->id }}">
                     <i class="bi bi-chevron-left"></i>
                 </a>
                 <label>Orders</label>

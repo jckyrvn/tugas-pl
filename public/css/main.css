@@ -998,6 +998,22 @@ section .main-carts form .wrap-content .destroy-carts{
 
 
 /* CHECKOUT */
+section .wrap-back{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+section .wrap-back .data-all{
+    margin-top: 77px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+section .wrap-back .data-all span{
+    color: #838383;
+}
+
 section .main-checkout{
     display: flex;
     flex-direction: row;
@@ -1113,6 +1129,7 @@ section .main-checkout .wrap-right .wrap-total .total-left{
 section .main-checkout .wrap-right .wrap-total .total-left label{
     font-size: 16px;
     font-weight: bold;
+    word-break: breal-all;
 }
 section .main-checkout .wrap-right .wrap-total .total-left span{
     display: flex;
@@ -1152,3 +1169,30 @@ section .main-checkout .wrap-right form button{
     font-size: 18px;
     border: none;
 }
+section .main-checkout .wrap-right .wrap-button form button{
+    margin: 31px 0px;
+    background-color: #0163D1;
+    border-radius: 5px;
+    width: 325px;
+    height: 51px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+}
+section .main-checkout .wrap-right .wrap-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+section .form-carts .button-1{
+    background-color: #0163D1;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 15px 74px;
+    width: 159px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+}  

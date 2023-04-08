@@ -29,16 +29,19 @@
 
     @include('layouts.navbar')
     <section>
-        <div class="back-profile">
-            <a href="{{ route('home') }}">
-                <i class="bi bi-chevron-left"></i>
-            </a>
-            <label>History</label>
+        <div class="wrap-back">
+            <div class="back-profile">
+                <a href="{{ route('home') }}">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+                <label>History</label>
+             </div>
+            <div class="data-all">
+                <label>No Order : {{ $dataall2->id }}</label> 
+                <span>Status : {{ $dataall2->status }}</span>
+             </div>
         </div>
-        <div class="data-all">
-            {{ $dataall2->id }} <br>
-            {{ $dataall2->status }} <br> <br>
-        </div>
+       
 
 
 
@@ -118,15 +121,16 @@
                 <input type="hidden" name="price" id="price" value="{{ $item->price }}">
                 <input type="hidden" name="totalprice" id="totalprice" value="">
 
-
+            <div class="wrap-button">
                 <form action="/pdf/home/{{ $dataall2->id }}" method="get">
-                    <button type="submit">Download PDF</button>
+                    <button type="submit">Download Invoice</button>
                 </form>
 
                 <form action="/post/updatehistory/{{ $dataall2->id }}" method="post">
                     @csrf
                     <button type="submit">Order Received</button>
                 </form>
+            </div>
 
             </div>
 

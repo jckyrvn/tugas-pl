@@ -70,8 +70,7 @@
             </form>
             @endforeach
         </div>
-        
-        <form action="/buy/checkout/{{ $item->buy_id }}" method="get">
+        <form action="/buy/checkout/{{ $item->buy_id }}" class="form-carts" method="get">
             @csrf
             <input type="hidden" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
             <input type="hidden" name="id" id="id" value="{{ $item->id }}">
@@ -81,9 +80,10 @@
             <input type="hidden" name="subprice" id="subprice" value="{{ $item->subprice }}">
             <input type="hidden" name="quantity" id="quantity" value="{{ $item->quantity }}">
             <input type="hidden" name="price" id="price" value="{{ $item->price }}">
-            <input type="text" name="totalprice" id="totalprice" value="{{ $sum1 }}">
-            <button type="submit">Process</button>
+            <input type="hidden" name="totalprice" id="totalprice" value="{{ $sum1 }}">
+            <button class="button-1" type="submit">Checkout</button>
         </form>
+        
     </section>
 </body>
 

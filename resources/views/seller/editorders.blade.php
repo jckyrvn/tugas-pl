@@ -29,43 +29,95 @@
 
     @include('layouts.navbar')
     <section>
-        History page <br><br>
+    <div class="wrap-back">
+            <div class="back-profile">
+                <a href="{{ url('seller/orders') }}">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+                <label>Orders</label>
+             </div>
+            <div class="data-all">
+                <label>No Order : {{ $dataall2->id }}</label> 
+                <span>Status : {{ $dataall2->status }}</span>
+             </div>
+        </div>
 
-        {{ $dataall2->id }} <br>
-        {{ $dataall2->status }} <br> <br>
+
+        <div class="main-checkout">
+
+            <div class="wrap-left">
+                @foreach ($dataall as $item)
+                <div class="second-left">
+                    <img src="/productimg/{{ $item->productdetail->media }}" alt="">
+                    <div class="wrap-product">
+                        <label>{{ $item->productdetail->name_product }}</label>
+                        <p>Quantity: {{ $item->quantity }}pcs</p>
+                        <h1>Rp. {{ $item->subprice }},00</h1>
+                    </div>
+                    <input type="hidden" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
+                    <input type="hidden" name="id" id="id" value="{{ $item->id }}">
+                    <input type="hidden" name="product_id" id="product_id" value="{{ $item->product_id }}">
+                    <input type="hidden" name="user_id" id="user_id" value="{{ $item->user_id }}">
+                    <input type="hidden" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
+                    <input type="hidden" name="subprice" id="subprice" value="{{ $item->subprice }}">
+                    <input type="hidden" name="quantity" id="quantity" value="{{ $item->quantity }}">
+                    <input type="hidden" name="price" id="price" value="{{ $item->price }}">
+                </div>
+                @endforeach
+            </div>
+
+            <div class="wrap-right">
+
+                <div class="content-detail">
+                    <h1>Contact Details</h1>
+                    <label>Name Of Recipent</label>
+                    <input type="text" value="{{ $user->name }}" readonly />
+
+                    <label> Phone Number </label>
+                    @if( Auth::user()->number != null)
+                    <input type="text" value="{{ $user->number }}" readonly />
+                    @else
+                    <input type="text" placeholder="You Must Add Number!" readonly />
+                    @endif
+
+                    <label> Address </label>
+                    @if( Auth::user()->address != null)
+                    <input type="text" value="{{ $user->address }}" readonly />
+                    @else
+                    <input type="text" placeholder="You Must Add Address!" readonly />
+                    @endif
+                </div>
 
 
 
-        @foreach ($dataall as $item)
-        <input type="text" name="buy_id" id="buy_id" value="{{ $item->buy_id }}" readonly>
-        <input type="text" name="id" id="id" value="{{ $item->id }}">
-        <input type="text" name="product_id" id="product_id" value="{{ $item->product_id }}">
-        <input type="text" name="user_id" id="user_id" value="{{ $item->user_id }}">
-        <input type="text" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
-        <input type="number" name="subprice" id="subprice" value="{{ $item->subprice }}">
-        <input type="number" name="quantity" id="quantity" value="{{ $item->quantity }}">
-        <input type="text" name="price" id="price" value="{{ $item->price }}">
-        <img src="/productimg/{{ $item->productdetail->media }}" alt="">
-        @endforeach
+                <div class="wrap-total">
+                    <h1>Total</h1>
+                    @foreach ($dataall as $item)
 
-        Name Of Recipent = {{ $user->name }} <br>
-        Address = {{ $user->address }} <br>
-        Number = {{ $user->number }} <br>
+                    <div class="total-left">
+                        <label>{{ $item->productdetail->name_product }}</label>
+                        <span>{{ $item->quantity }} * {{ $item->subprice }} = <p> Rp. {{ $item->price }},00</p></span>
+                    </div>
 
-        @foreach ($dataall as $item)
-        @csrf
-        <hr>
-        <input type="text" name="product_name" id="product_name" value="{{ $item->productdetail->name_product }}">
-        <input type="text" name="product_id" id="product_id" value="{{ $item->product_id }}">
-        <input type="text" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
-        <input type="number" name="subprice" id="subprice" value="{{ $item->subprice }}">
-        <input type="number" name="quantity" id="quantity" value="{{ $item->quantity }}">
-        <input type="text" name="price" id="price" value="{{ $item->price }}">
+                    @endforeach
+                    <div class="total-right">
+                        <span>Subtotal<p>Rp. {{ $sum1 }},00</p></span>
+                        <span>Biaya Layanan<p>FREE</p></span>
+                        <span>Biaya Ongkir<p>FREE</p></span>
+                        <span>Total<p>Rp. {{ $sum1 }},00</p></span>
+                    </div>
+                </div>
 
-        @endforeach
-        </form>
 
-        <hr>
+                <input type="hidden" name="product_name" id="product_name"
+                    value="{{ $item->productdetail->name_product }}">
+                <input type="hidden" name="product_id" id="product_id" value="{{ $item->product_id }}">
+                <input type="hidden" name="user_id" id="user_id" value="{{ $item->user_id }}">
+                <input type="hidden" name="seller_id" id="seller_id" value="{{ $item->seller_id }}">
+                <input type="hidden" name="subprice" id="subprice" value="{{ $item->subprice }}">
+                <input type="hidden" name="quantity" id="quantity" value="{{ $item->quantity }}">
+                <input type="hidden" name="price" id="price" value="{{ $item->price }}">
+                <input type="hidden" name="totalprice" id="totalprice" value="">
 
         <form action="/seller/updateorders/{{ $dataall2->id }}" method="post">
             @csrf
