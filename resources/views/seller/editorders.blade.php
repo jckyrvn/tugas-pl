@@ -74,14 +74,14 @@
                     <input type="text" value="{{ $user->name }}" readonly />
 
                     <label> Phone Number </label>
-                    @if( Auth::user()->number != null)
+                    @if( $user->number != null)
                     <input type="text" value="{{ $user->number }}" readonly />
                     @else
                     <input type="text" placeholder="You Must Add Number!" readonly />
                     @endif
 
                     <label> Address </label>
-                    @if( Auth::user()->address != null)
+                    @if( $user->address != null)
                     <input type="text" value="{{ $user->address }}" readonly />
                     @else
                     <input type="text" placeholder="You Must Add Address!" readonly />
