@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Items</title>
+    <title>Create Product Page</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -32,11 +32,11 @@
         <div class="container-mid">
             <img src="{{ asset('images/logo.png') }}" class="img-logo">
             <b>Add Items</b>
-            
+
             <form action="/seller/postproduct" method="post" enctype="multipart/form-data" class="form-product">
                 @csrf
-                <input type="hidden" name="seller_id" id="seller_id" placeholder="seller_id" value="{{ Auth::user()->id }}"
-                readonly>
+                <input type="hidden" name="seller_id" id="seller_id" placeholder="seller_id"
+                    value="{{ Auth::user()->id }}" readonly>
                 <div class="main-product">
                     <h1>Product Information</h1>
                     <div class="main-content">
@@ -45,19 +45,19 @@
                                 <label>Product Name</label>
                                 <span>Required</span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>The name of product.</p>
                         </div>
                         <input type="text" name="name_product" id="name_product">
                     </div>
 
-                
+
                     <div class="main-content">
                         <div class="wrap-content">
                             <div class="wrap-detail">
                                 <label>Description</label>
                                 <span>Required</span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Description of the product you want to add.</p>
                         </div>
                         <textarea type="text" name="description" id="description"></textarea>
                     </div>
@@ -69,12 +69,12 @@
                                 <label>Stock</label>
                                 <span>Required</span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Product stock quantity.</p>
                         </div>
                         <input type="number" name="stock" id="stock" class="input-stock">
                     </div>
 
-                   
+
                 </div>
 
 
@@ -87,20 +87,21 @@
                                 <label>Subprice</label>
                                 <span>Required</span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Products price before discount.</p>
                         </div>
                         <input type="number" name="subprice" id="subprice" class="input-stock">
                     </div>
 
-                
+
                     <div class="main-content">
                         <div class="wrap-content">
                             <div class="wrap-detail">
                                 <label>Discount</label>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Product discount in percent.</p>
                         </div>
-                        <input type="number" name="discount" id="discount" class="input-stock" onblur="price_discount()">
+                        <input type="number" name="discount" id="discount" class="input-stock"
+                            onblur="price_discount()">
                     </div>
 
 
@@ -109,7 +110,7 @@
                             <div class="wrap-detail">
                                 <label>Cut-Price</label>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Product discount in currency.</p>
                         </div>
                         <label type="text" name="rp_discount" id="rp_discount" class="input-stock"></label>
                     </div>
@@ -119,12 +120,12 @@
                             <div class="wrap-detail">
                                 <label>Price</label>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p>Products final price.</p>
                         </div>
                         <input type="number" name="price" id="price" class="input-stock">
                     </div>
 
-                   
+
                 </div>
 
                 <div class="main-product">
@@ -132,9 +133,9 @@
                     <div>
                         <input type="file" name="media" id="media" class="input-photo">
                         <div class="main-photo" id="display_media">
-                        <i class="bi bi-folder-plus"></i>
+                            <i class="bi bi-folder-plus"></i>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -142,7 +143,7 @@
                     <a class="cancel-product" href="{{ url('pages/seller') }}/{{ Auth::user()->id }}">Cancel</a>
                     <button type="submit">Upload</button>
                 </div>
-        </form>
+            </form>
         </div>
     </section>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>

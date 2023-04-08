@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>History {{ $dataall2->id }}</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -35,13 +35,13 @@
                     <i class="bi bi-chevron-left"></i>
                 </a>
                 <label>History</label>
-             </div>
+            </div>
             <div class="data-all">
-                <label>No Order : {{ $dataall2->id }}</label> 
+                <label>No Order : {{ $dataall2->id }}</label>
                 <span>Status : {{ $dataall2->status }}</span>
-             </div>
+            </div>
         </div>
-       
+
 
 
 
@@ -121,16 +121,20 @@
                 <input type="hidden" name="price" id="price" value="{{ $item->price }}">
                 <input type="hidden" name="totalprice" id="totalprice" value="">
 
-            <div class="wrap-button">
-                <form action="/pdf/home/{{ $dataall2->id }}" method="get">
-                    <button type="submit">Download Invoice</button>
-                </form>
+                <div class="wrap-button">
+                    <form action="/pdf/home/{{ $dataall2->id }}" method="get">
+                        <button type="submit">Download Invoice</button>
+                    </form>
+
+                    <form action="/pdf/liveview/{{ $dataall2->id }}" method="get">
+                        <button type="submit">Liveview Invoice</button>
+                    </form>
+                </div>
 
                 <form action="/post/updatehistory/{{ $dataall2->id }}" method="post">
                     @csrf
                     <button type="submit">Order Received</button>
                 </form>
-            </div>
 
             </div>
 

@@ -54,6 +54,15 @@
                         Become Seller
                     </a>
                     @endif
+
+                    @if (\Auth::user() && \Auth::user()->isAdmin == true)
+                    <form action="{{ url('admin/home') }}" method="GET">
+                        @csrf
+                        <button type="submit" class="dropdown-item text-dark">Admin Page</button>
+                    </form>
+                    @endif
+                    @if (\Auth::user() && \Auth::user()->isAdmin == false)
+                    @endif
                     <li class="self-drop"><a class="dropdown-item" href="{{ route('auth.login') }}"><i
                                 class="bi bi-box-arrow-left"></i> Logout</a></li>
                 </ul>

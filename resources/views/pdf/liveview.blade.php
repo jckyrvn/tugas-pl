@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Invoice</title>
+    <title>Liveview Invoice {{ $item2->id }}</title>
 </head>
 
 <style>
